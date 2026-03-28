@@ -3,481 +3,211 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Dr. Fahad Ayaz | Academic Portfolio</title>
+<title>Dr. Fahad Ayaz | Research Fellow & Global Talent</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,700;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
-<style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  :root {
-    --ink: #0f0e0c;
-    --paper: #f5f0e8;
-    --cream: #ede7d9;
-    --accent: #c84b2f;
-    --muted: #7a7062;
-    --border: #d4ccbc;
-    --card: #faf7f2;
-    --ff-display: 'Fraunces', serif;
-    --ff-body: 'DM Sans', sans-serif;
-  }
-  html { scroll-behavior: smooth; }
-  body { background: var(--paper); color: var(--ink); font-family: var(--ff-body); font-size: 15px; line-height: 1.6; }
-
-  /* NAV */
-  nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    display: flex; justify-content: space-between; align-items: center;
-    padding: 1.1rem 3rem;
-    background: rgba(245,240,232,0.88);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border);
-  }
-  .nav-logo { font-family: var(--ff-display); font-size: 1.25rem; font-weight: 700; letter-spacing: -0.02em; }
-  .nav-links { display: flex; gap: 2rem; list-style: none; }
-  .nav-links a { text-decoration: none; color: var(--muted); font-size: 0.85rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; transition: color 0.2s; }
-  .nav-links a:hover { color: var(--accent); }
-
-  /* SECTIONS */
-  section { padding: 7rem 3rem; max-width: 1100px; margin: 0 auto; }
-
-  /* HERO */
-  #hero {
-    min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; align-items: center;
-    gap: 4rem; padding-top: 8rem; max-width: 1100px; margin: 0 auto;
-  }
-  .hero-eyebrow {
-    display: inline-block; font-size: 0.78rem; font-weight: 500; letter-spacing: 0.14em;
-    text-transform: uppercase; color: var(--accent); margin-bottom: 1.2rem;
-    border-bottom: 1px solid var(--accent); padding-bottom: 0.3rem;
-  }
-  .hero-title {
-    font-family: var(--ff-display); font-size: clamp(2.8rem, 5vw, 4.5rem);
-    font-weight: 300; line-height: 1.05; letter-spacing: -0.03em;
-    margin-bottom: 1.4rem;
-  }
-  .hero-title em { font-style: italic; color: var(--accent); }
-  .hero-subtitle { color: var(--muted); font-size: 1rem; max-width: 420px; margin-bottom: 2.2rem; line-height: 1.7; }
-  .hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; }
-  .btn {
-    padding: 0.75rem 1.8rem; font-size: 0.85rem; font-weight: 500;
-    letter-spacing: 0.05em; text-transform: uppercase; cursor: pointer;
-    border: none; transition: all 0.2s; text-decoration: none; display: inline-block;
-  }
-  .btn-primary { background: var(--ink); color: var(--paper); }
-  .btn-primary:hover { background: var(--accent); }
-  .btn-outline { background: transparent; color: var(--ink); border: 1.5px solid var(--border); }
-  .btn-outline:hover { border-color: var(--ink); }
-  .hero-image-wrap {
-    position: relative; display: flex; justify-content: center; align-items: center;
-  }
-  .hero-image-bg {
-    width: 340px; height: 420px; background: var(--cream);
-    border: 1px solid var(--border);
-    position: relative; overflow: hidden;
-  }
-  .hero-image-bg::before {
-    content: ''; position: absolute; inset: 0;
-    background: repeating-linear-gradient(45deg, transparent, transparent 8px, rgba(0,0,0,0.025) 8px, rgba(0,0,0,0.025) 9px);
-  }
-  .hero-initials {
-    font-family: var(--ff-display); font-size: 8rem; font-weight: 700;
-    color: var(--border); position: absolute; top: 50%; left: 50%;
-    transform: translate(-50%, -50%); letter-spacing: -0.05em;
-  }
-  .hero-badge {
-    position: absolute; bottom: -1rem; right: -1rem;
-    background: var(--accent); color: white;
-    padding: 0.7rem 1rem; font-size: 0.75rem; font-weight: 500;
-    letter-spacing: 0.05em; text-transform: uppercase;
-    max-width: 160px; text-align: center;
-  }
-  .stats-row {
-    display: flex; gap: 2.5rem; margin-top: 2.5rem; padding-top: 2rem;
-    border-top: 1px solid var(--border);
-  }
-  .stat-num { font-family: var(--ff-display); font-size: 2rem; font-weight: 700; color: var(--ink); line-height: 1; }
-  .stat-label { font-size: 0.75rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; margin-top: 0.25rem; }
-
-  /* SECTION HEADERS */
-  .section-label {
-    font-size: 0.75rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase;
-    color: var(--accent); margin-bottom: 0.6rem;
-  }
-  .section-title {
-    font-family: var(--ff-display); font-size: clamp(2rem, 3.5vw, 3rem);
-    font-weight: 300; letter-spacing: -0.025em; line-height: 1.1; margin-bottom: 3.5rem;
-  }
-  .section-divider { width: 48px; height: 2px; background: var(--accent); margin: 1.2rem 0 3.5rem; }
-
-  /* ABOUT */
-  .about-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 4rem; align-items: start; }
-  .about-text p { color: var(--muted); line-height: 1.9; margin-bottom: 1.2rem; }
-  .about-text p strong { color: var(--ink); font-weight: 500; }
-  .about-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.5rem; }
-  .tag {
-    padding: 0.35rem 0.9rem; background: var(--cream);
-    border: 1px solid var(--border); font-size: 0.78rem; font-weight: 500;
-    letter-spacing: 0.04em; color: var(--ink);
-  }
-  .about-sidebar { display: flex; flex-direction: column; gap: 1.5rem; }
-  .info-block { padding: 1.4rem; background: var(--card); border: 1px solid var(--border); }
-  .info-block h4 { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 0.6rem; }
-  .info-block p { font-size: 0.92rem; color: var(--ink); font-weight: 500; }
-
-  /* EXPERIENCE */
-  .timeline { position: relative; }
-  .timeline::before {
-    content: ''; position: absolute; left: 0; top: 0; bottom: 0;
-    width: 1px; background: var(--border);
-  }
-  .timeline-item { position: relative; padding-left: 2.5rem; margin-bottom: 3rem; }
-  .timeline-dot {
-    position: absolute; left: -5px; top: 0.35rem;
-    width: 10px; height: 10px; border-radius: 50%;
-    background: var(--paper); border: 2px solid var(--accent);
-  }
-  .timeline-meta { display: flex; gap: 1rem; align-items: center; margin-bottom: 0.4rem; flex-wrap: wrap; }
-  .timeline-date { font-size: 0.75rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); }
-  .timeline-badge {
-    font-size: 0.68rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase;
-    padding: 0.15rem 0.6rem; background: var(--cream); border: 1px solid var(--border); color: var(--muted);
-  }
-  .timeline-role { font-family: var(--ff-display); font-size: 1.3rem; font-weight: 400; margin-bottom: 0.2rem; }
-  .timeline-org { font-size: 0.9rem; color: var(--accent); font-weight: 500; margin-bottom: 0.6rem; }
-  .timeline-desc { color: var(--muted); font-size: 0.9rem; line-height: 1.75; }
-
-  /* RESEARCH */
-  .research-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem; }
-  .pub-card {
-    padding: 1.8rem; background: var(--card); border: 1px solid var(--border);
-    transition: border-color 0.2s, transform 0.2s;
-    cursor: default;
-  }
-  .pub-card:hover { border-color: var(--accent); transform: translateY(-2px); }
-  .pub-type { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.8rem; }
-  .pub-title { font-family: var(--ff-display); font-size: 1rem; font-weight: 400; line-height: 1.45; margin-bottom: 0.6rem; }
-  .pub-venue { font-size: 0.82rem; color: var(--muted); margin-bottom: 1rem; }
-  .pub-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
-  .pub-tag { font-size: 0.7rem; padding: 0.2rem 0.55rem; background: var(--cream); border: 1px solid var(--border); color: var(--muted); }
-
-  /* SKILLS */
-  .skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 2rem; }
-  .skill-group h3 { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 500; color: var(--muted); margin-bottom: 1.2rem; border-bottom: 1px solid var(--border); padding-bottom: 0.6rem; }
-  .skill-item { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.8rem; }
-  .skill-name { font-size: 0.9rem; color: var(--ink); }
-  .skill-bar-wrap { width: 100px; height: 3px; background: var(--border); }
-  .skill-bar { height: 100%; background: var(--accent); }
-
-  /* CONTACT */
-  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
-  .contact-info h3 { font-family: var(--ff-display); font-size: 1.8rem; font-weight: 300; margin-bottom: 1.2rem; line-height: 1.3; }
-  .contact-info p { color: var(--muted); line-height: 1.8; margin-bottom: 2rem; }
-  .contact-detail { display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1.2rem; }
-  .contact-detail-icon { width: 36px; height: 36px; background: var(--cream); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 1rem; }
-  .contact-detail-label { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 0.1rem; }
-  .contact-detail-value { font-size: 0.9rem; font-weight: 500; }
-  .contact-form { display: flex; flex-direction: column; gap: 1.2rem; }
-  .form-field { display: flex; flex-direction: column; gap: 0.4rem; }
-  .form-field label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); font-weight: 500; }
-  .form-field input, .form-field textarea {
-    padding: 0.8rem 1rem; background: var(--card);
-    border: 1px solid var(--border); font-family: var(--ff-body);
-    font-size: 0.9rem; color: var(--ink); outline: none;
-    transition: border-color 0.2s; resize: none;
-  }
-  .form-field input:focus, .form-field textarea:focus { border-color: var(--accent); }
-
-  /* FOOTER */
-  footer {
-    text-align: center; padding: 2.5rem; border-top: 1px solid var(--border);
-    font-size: 0.8rem; color: var(--muted); letter-spacing: 0.05em;
-  }
-
-  @media (max-width: 768px) {
-    nav { padding: 1rem 1.5rem; }
-    .nav-links { display: none; }
-    #hero { grid-template-columns: 1fr; padding: 6rem 1.5rem 3rem; min-height: auto; gap: 2.5rem; }
-    .hero-image-wrap { display: none; }
-    section { padding: 5rem 1.5rem; }
-    .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-  }
-</style>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
 
+<!-- NAVIGATION -->
 <nav>
-  <div class="nav-logo">Dr. Fahad Ayaz</div>
+  <div class="nav-logo">
+    <div class="nav-logo-badge">FA</div>
+    <span class="nav-logo-text">Dr. Fahad Ayaz</span>
+  </div>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
+    <li><a href="#education">Education</a></li>
     <li><a href="#experience">Experience</a></li>
     <li><a href="#research">Research</a></li>
+    <li><a href="#projects">Projects</a></li>
     <li><a href="#skills">Skills</a></li>
+    <li><a href="#certificates">Certificates</a></li>
+    <li><a href="#photos">Photos</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
 </nav>
 
 <!-- HERO -->
 <div id="hero">
-  <div class="hero-content">
-    <span class="hero-eyebrow">Postdoctoral Research Fellow</span>
-    <h1 class="hero-title">Dr. <em>Fahad</em><br>Ayaz</h1>
-    <p class="hero-subtitle">
-      Researcher in [Your Field] at [Your University]. Endorsed as a Global Talent
-      by [Your Awarding Body]. Passionate about advancing knowledge in [Your Specialty].
-    </p>
+  <div class="hero-left">
+    <div class="hero-badge"><span class="pulse"></span><span id="hero-badge-text"></span></div>
+    <h1 class="hero-title" id="hero-title"></h1>
+    <p class="hero-subtitle" id="hero-subtitle"></p>
+    <div class="hero-role-tags" id="hero-role-tags"></div>
     <div class="hero-cta">
       <a href="#contact" class="btn btn-primary">Get in Touch</a>
       <a href="#research" class="btn btn-outline">View Research</a>
     </div>
-    <div class="stats-row">
-      <div>
-        <div class="stat-num">24</div>
-        <div class="stat-label">Publications</div>
-      </div>
-      <div>
-        <div class="stat-num">8+</div>
-        <div class="stat-label">Years Research</div>
-      </div>
-      <div>
-        <div class="stat-num">5</div>
-        <div class="stat-label">Research Grants</div>
-      </div>
-    </div>
+    <div class="stats-row" id="hero-stats"></div>
   </div>
-  <div class="hero-image-wrap">
-    <div class="hero-image-bg">
-      <div class="hero-initials">FA</div>
+  <div class="hero-right">
+    <div class="hero-card">
+      <div class="hero-card-top">
+        <div class="hero-avatar" id="hero-avatar"></div>
+      </div>
+      <div class="hero-card-body">
+        <div class="hero-card-name" id="hero-card-name"></div>
+        <div class="hero-card-role" id="hero-card-role"></div>
+        <div class="hc-tags" id="hero-card-tags"></div>
+      </div>
     </div>
-    <div class="hero-badge">Global Talent<br>[Your Body]</div>
   </div>
 </div>
 
 <!-- ABOUT -->
-<section id="about">
+<div class="section-wrap" id="about" data-section="about">
   <div class="section-label">About Me</div>
-  <h2 class="section-title">Professional Summary</h2>
-  <div class="section-divider"></div>
+  <h2 class="section-title">Professional <span>Summary</span></h2>
+  <div class="section-line"></div>
   <div class="about-grid">
-    <div class="about-text">
-      <p>
-        Motivated and results-driven researcher with a <strong>Ph.D. in [Your Discipline]</strong> from the University of [Your University]. Endorsed as a Global Talent by [Your Awarding Body], with a proven track record in developing innovative solutions in [Your Field].
-      </p>
-      <p>
-        Experienced in [Research Area 1], [Research Area 2], [Research Area 3], and [Research Area 4]. Currently serving as a Postdoctoral Research Fellow at [Your Institution], leading research projects funded by [Funding Body 1] and [Funding Body 2].
-      </p>
-      <div class="about-tags">
-        <span class="tag">[Research Area 1]</span>
-        <span class="tag">[Research Area 2]</span>
-        <span class="tag">[Research Area 3]</span>
-        <span class="tag">[Machine Learning]</span>
-        <span class="tag">[Signal Processing]</span>
-      </div>
+    <div>
+      <div id="about-summary"></div>
+      <div class="tag-group" id="about-tags"></div>
     </div>
-    <div class="about-sidebar">
-      <div class="info-block">
-        <h4>Current Position</h4>
-        <p>Research Fellow at [University]</p>
-      </div>
-      <div class="info-block">
-        <h4>Ph.D. Institution</h4>
-        <p>University of [Name]</p>
-      </div>
-      <div class="info-block">
-        <h4>Location</h4>
-        <p>[City], United Kingdom</p>
+    <div>
+      <div class="info-card"><h4>Current Position</h4><p id="about-position"></p></div>
+      <div class="info-card"><h4>Ph.D. Institution</h4><p id="about-education"></p></div>
+      <div class="info-card"><h4>Location</h4><p id="about-location"></p></div>
+      <div class="info-card">
+        <h4>Languages</h4>
+        <div class="lang-chips" id="about-languages"></div>
       </div>
     </div>
   </div>
-</section>
+</div>
+
+<!-- EDUCATION -->
+<div class="section-wrap" id="education" data-section="education">
+  <div class="section-label">Academic Background</div>
+  <h2 class="section-title">Education</h2>
+  <div class="section-line"></div>
+  <div class="edu-grid" id="education-grid"></div>
+</div>
 
 <!-- EXPERIENCE -->
-<section id="experience">
+<div class="section-wrap" id="experience" data-section="experience">
   <div class="section-label">Career</div>
-  <h2 class="section-title">Professional Experience</h2>
-  <div class="section-divider"></div>
-  <div class="timeline">
-    <div class="timeline-item">
-      <div class="timeline-dot"></div>
-      <div class="timeline-meta">
-        <span class="timeline-date">Oct 2024 - Present</span>
-        <span class="timeline-badge">Current</span>
-      </div>
-      <div class="timeline-role">Research Fellow</div>
-      <div class="timeline-org">[Your University], UK</div>
-      <div class="timeline-desc">Leading [Funding Body]-funded project on [Project Title]. Collaborating with [Partner 1] and [Partner 2]. Developing algorithms for [Your Application Area].</div>
-    </div>
-    <div class="timeline-item">
-      <div class="timeline-dot"></div>
-      <div class="timeline-meta">
-        <span class="timeline-date">Oct 2024 - Mar 2025</span>
-        <span class="timeline-badge">Research</span>
-      </div>
-      <div class="timeline-role">Researcher in [Topic]</div>
-      <div class="timeline-org">[Your University] (EPSRC Funded)</div>
-      <div class="timeline-desc">[Short description of your research project and key outcomes or contributions.]</div>
-    </div>
-    <div class="timeline-item">
-      <div class="timeline-dot"></div>
-      <div class="timeline-meta">
-        <span class="timeline-date">Sept 2021 - Sept 2024</span>
-        <span class="timeline-badge">PhD</span>
-      </div>
-      <div class="timeline-role">Graduate Teaching Assistant</div>
-      <div class="timeline-org">University of [Name]</div>
-      <div class="timeline-desc">[Course 1], [Course 2], [Course 3]. Supervised [X] postgraduate students.</div>
-    </div>
-    <div class="timeline-item">
-      <div class="timeline-dot"></div>
-      <div class="timeline-meta">
-        <span class="timeline-date">Feb 2020 - May 2021</span>
-        <span class="timeline-badge">Lecturer</span>
-      </div>
-      <div class="timeline-role">Lecturer</div>
-      <div class="timeline-org">University of [Name], [City]</div>
-      <div class="timeline-desc">[Subject 1], [Subject 2], [Subject 3]. Designed curriculum and delivered lectures to undergraduate cohorts.</div>
-    </div>
-  </div>
-</section>
+  <h2 class="section-title">Professional <span>Experience</span></h2>
+  <div class="section-line"></div>
+  <div class="timeline" id="experience-timeline"></div>
+</div>
 
-<!-- RESEARCH -->
-<section id="research">
+<!-- RESEARCH & PUBLICATIONS -->
+<div class="section-wrap" id="research" data-section="research">
   <div class="section-label">Publications</div>
-  <h2 class="section-title">Research &amp; Publications</h2>
-  <div class="section-divider"></div>
-  <div class="research-grid">
-    <div class="pub-card">
-      <div class="pub-type">Journal &middot; 2024</div>
-      <div class="pub-title">Your Paper Title: A Study in [Research Topic] Using [Method]</div>
-      <div class="pub-venue">[Journal Name, Publisher, Vol. X, No. Y]</div>
-      <div class="pub-tags">
-        <span class="pub-tag">[Topic 1]</span>
-        <span class="pub-tag">[Topic 2]</span>
-        <span class="pub-tag">[Method]</span>
-      </div>
-    </div>
-    <div class="pub-card">
-      <div class="pub-type">Journal &middot; 2023</div>
-      <div class="pub-title">Another Publication Title on [Research Area] and [Subtopic]</div>
-      <div class="pub-venue">[Journal Name - Publisher]</div>
-      <div class="pub-tags">
-        <span class="pub-tag">[Area 1]</span>
-        <span class="pub-tag">[Area 2]</span>
-      </div>
-    </div>
-    <div class="pub-card">
-      <div class="pub-type">Conference &middot; [Year]</div>
-      <div class="pub-title">Conference Paper Title for [IEEE / ACM / Other Venue]</div>
-      <div class="pub-venue">[Full Conference Name, Location]</div>
-      <div class="pub-tags">
-        <span class="pub-tag">[Topic]</span>
-        <span class="pub-tag">[Application]</span>
-      </div>
-    </div>
-    <div class="pub-card">
-      <div class="pub-type">Book Chapter &middot; 2024</div>
-      <div class="pub-title">Chapter Title in [Book Title, Publisher]</div>
-      <div class="pub-venue">[Publisher, Editors: Name et al.]</div>
-      <div class="pub-tags">
-        <span class="pub-tag">[Theme]</span>
-        <span class="pub-tag">[Technology]</span>
-      </div>
-    </div>
-    <div class="pub-card">
-      <div class="pub-type">Ongoing Research</div>
-      <div class="pub-title">[Project Title] funded by [Funding Body]</div>
-      <div class="pub-venue">In progress with [Collaborating Institutions]</div>
-      <div class="pub-tags">
-        <span class="pub-tag">[Key Word]</span>
-        <span class="pub-tag">[Key Word]</span>
-      </div>
-    </div>
-  </div>
-</section>
+  <h2 class="section-title">Research &amp; <span>Publications</span></h2>
+  <div class="section-line"></div>
+  <div class="pub-grid" id="pub-grid"></div>
+</div>
+
+<!-- ONGOING PROJECTS -->
+<div class="section-wrap" id="projects" data-section="projects">
+  <div class="section-label">Current Work</div>
+  <h2 class="section-title">Ongoing <span>Projects</span></h2>
+  <div class="section-line"></div>
+  <div class="project-grid" id="projects-grid"></div>
+</div>
 
 <!-- SKILLS -->
-<section id="skills">
+<div class="section-wrap" id="skills" data-section="skills">
   <div class="section-label">Expertise</div>
-  <h2 class="section-title">Technical Skills</h2>
-  <div class="section-divider"></div>
-  <div class="skills-grid">
-    <div class="skill-group">
-      <h3>AI &amp; Machine Learning</h3>
-      <div class="skill-item"><span class="skill-name">Python (TensorFlow, PyTorch)</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:95%"></div></div></div>
-      <div class="skill-item"><span class="skill-name">[ML Speciality 1]</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:90%"></div></div></div>
-      <div class="skill-item"><span class="skill-name">[ML Speciality 2]</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:82%"></div></div></div>
-    </div>
-    <div class="skill-group">
-      <h3>[Technical Domain]</h3>
-      <div class="skill-item"><span class="skill-name">[Skill 1]</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:95%"></div></div></div>
-      <div class="skill-item"><span class="skill-name">[Skill 2]</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:90%"></div></div></div>
-      <div class="skill-item"><span class="skill-name">[Skill 3]</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:88%"></div></div></div>
-    </div>
-    <div class="skill-group">
-      <h3>Programming</h3>
-      <div class="skill-item"><span class="skill-name">Python</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:96%"></div></div></div>
-      <div class="skill-item"><span class="skill-name">MATLAB</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:90%"></div></div></div>
-      <div class="skill-item"><span class="skill-name">C / C++</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:78%"></div></div></div>
-    </div>
-    <div class="skill-group">
-      <h3>Research &amp; Teaching</h3>
-      <div class="skill-item"><span class="skill-name">Curriculum Design</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:92%"></div></div></div>
-      <div class="skill-item"><span class="skill-name">Grant Writing</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:85%"></div></div></div>
-      <div class="skill-item"><span class="skill-name">Academic Publishing</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:95%"></div></div></div>
-    </div>
-  </div>
-</section>
+  <h2 class="section-title">Technical <span>Skills</span></h2>
+  <div class="section-line"></div>
+  <div class="skills-grid" id="skills-grid"></div>
+</div>
+
+<!-- CERTIFICATES, AWARDS & ACHIEVEMENTS -->
+<div class="section-wrap" id="certificates" data-section="certificates">
+  <div class="section-label">Recognition</div>
+  <h2 class="section-title">Certificates, Awards &amp; <span>Achievements</span></h2>
+  <div class="section-line"></div>
+
+  <h3 style="font-size:0.8rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--blue-light);margin-bottom:1.2rem">Certificates</h3>
+  <div class="cert-grid" id="cert-grid" style="margin-bottom:3rem"></div>
+
+  <h3 style="font-size:0.8rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--blue-light);margin-bottom:1.2rem">Awards &amp; Honours</h3>
+  <div class="cert-grid" id="awards-grid" style="margin-bottom:3rem"></div>
+
+  <h3 style="font-size:0.8rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--blue-light);margin-bottom:1.2rem">Achievements</h3>
+  <div class="achievement-list" id="achievements-list"></div>
+</div>
+
+<!-- COLLABORATORS -->
+<div class="section-wrap" id="collaborators" data-section="collaborators">
+  <div class="section-label">Network</div>
+  <h2 class="section-title">Collaborators &amp; <span>Partners</span></h2>
+  <div class="section-line"></div>
+  <div class="collab-grid" id="collab-grid"></div>
+</div>
+
+<!-- PHOTOS -->
+<div class="section-wrap" id="photos" data-section="photos">
+  <div class="section-label">Gallery</div>
+  <h2 class="section-title">Past <span>Events</span></h2>
+  <div class="section-line"></div>
+  <div class="photo-filter" id="photo-filter"></div>
+  <div class="photo-grid" id="photo-grid"></div>
+</div>
 
 <!-- CONTACT -->
-<section id="contact">
+<div class="section-wrap" id="contact" data-section="contact">
   <div class="section-label">Let's Talk</div>
-  <h2 class="section-title">Get in Touch</h2>
-  <div class="section-divider"></div>
+  <h2 class="section-title">Get in <span>Touch</span></h2>
+  <div class="section-line"></div>
   <div class="contact-grid">
     <div class="contact-info">
       <h3>Let's collaborate on research or discuss opportunities</h3>
-      <p>Whether you're looking to partner on a project, discuss funding opportunities, or explore academic collaboration, I'd love to hear from you.</p>
-      <div class="contact-detail">
-        <div class="contact-detail-icon">&#9993;</div>
-        <div>
-          <div class="contact-detail-label">Email</div>
-          <div class="contact-detail-value">your.email@university.ac.uk</div>
-        </div>
+      <p>Whether you're looking to partner on a project, discuss funding, or explore academic collaboration, I'd love to hear from you.</p>
+      <div class="contact-item">
+        <div class="contact-icon">✉</div>
+        <div><div class="contact-label">Email</div><a class="contact-value" id="contact-email"></a></div>
       </div>
-      <div class="contact-detail">
-        <div class="contact-detail-icon">&#9742;</div>
-        <div>
-          <div class="contact-detail-label">Phone</div>
-          <div class="contact-detail-value">+44 (0) XXXX XXXXXX</div>
-        </div>
+      <div class="contact-item">
+        <div class="contact-icon">☎</div>
+        <div><div class="contact-label">Phone</div><div class="contact-value" id="contact-phone"></div></div>
       </div>
-      <div class="contact-detail">
-        <div class="contact-detail-icon">&#8962;</div>
-        <div>
-          <div class="contact-detail-label">Institution</div>
-          <div class="contact-detail-value">[Your University], UK</div>
-        </div>
+      <div class="contact-item">
+        <div class="contact-icon">🏛</div>
+        <div><div class="contact-label">Institution</div><div class="contact-value" id="contact-institution"></div></div>
       </div>
+      <div class="contact-item">
+        <div class="contact-icon">📍</div>
+        <div><div class="contact-label">Office</div><div class="contact-value" id="contact-office"></div></div>
+      </div>
+      <div class="social-links" id="social-links"></div>
     </div>
-    <div class="contact-form">
-      <div class="form-field">
-        <label>Your Name</label>
-        <input type="text" placeholder="Jane Smith" />
-      </div>
-      <div class="form-field">
-        <label>Email Address</label>
-        <input type="email" placeholder="jane@example.com" />
-      </div>
-      <div class="form-field">
-        <label>Message</label>
-        <textarea rows="5" placeholder="Tell me about your project or inquiry..."></textarea>
-      </div>
+    <div class="form-wrap">
+      <div class="form-field"><label>Your Name</label><input type="text" placeholder="Jane Smith" /></div>
+      <div class="form-field"><label>Email Address</label><input type="email" placeholder="jane@example.com" /></div>
+      <div class="form-field"><label>Subject</label><input type="text" placeholder="Research collaboration inquiry" /></div>
+      <div class="form-field"><label>Message</label><textarea rows="5" placeholder="Tell me about your project or inquiry..."></textarea></div>
       <button class="btn btn-primary" style="width:fit-content">Send Message</button>
     </div>
   </div>
-</section>
+</div>
 
 <footer>
-  &copy; 2025 Dr. Fahad Ayaz &nbsp;&middot;&nbsp; All rights reserved
+  &copy; <span id="footer-year"></span> <span id="footer-name"></span> &nbsp;&middot;&nbsp; All rights reserved
+  <script>document.getElementById('footer-year').textContent = new Date().getFullYear();</script>
 </footer>
+
+<!-- DATA FILES — edit these to update your content -->
+<script src="data/personal.js"></script>
+<script src="data/contact.js"></script>
+<script src="data/about.js"></script>
+<script src="data/education.js"></script>
+<script src="data/experience.js"></script>
+<script src="data/publications.js"></script>
+<script src="data/projects.js"></script>
+<script src="data/skills.js"></script>
+<script src="data/certificates.js"></script>
+<script src="data/collaborators.js"></script>
+<script src="data/photos.js"></script>
+
+<!-- RENDERER — do not edit -->
+<script src="js/render.js"></script>
 
 </body>
 </html>
