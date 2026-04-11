@@ -3,10 +3,317 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Dr. Fahad Ayaz | Research Fellow & Global Talent</title>
+<title>Dr. Fahad Ayaz | Postdoctoral Fellow & Global Talent</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="css/style.css" />
+<style>
+/* ============================================================
+   STYLE.CSS — All visual styling for the portfolio
+   To change colours, fonts, or layout — edit this file.
+   ============================================================ */
+
+/* --- THEME VARIABLES --- */
+:root {
+  --bg-dark:        #0a0f1e;
+  --bg-card:        #111827;
+  --bg-card2:       #1a2236;
+  --blue:           #3b82f6;
+  --blue-light:     #60a5fa;
+  --blue-glow:      rgba(59,130,246,0.15);
+  --cyan:           #06b6d4;
+  --text:           #f1f5f9;
+  --text-muted:     #94a3b8;
+  --border:         rgba(59,130,246,0.2);
+  --border-bright:  rgba(59,130,246,0.5);
+  --ff-body:        'Inter', sans-serif;
+  --ff-display:     'Playfair Display', serif;
+  --radius:         10px;
+}
+
+/* --- RESET & BASE --- */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg-dark);
+  color: var(--text);
+  font-family: var(--ff-body);
+  font-size: 15px;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+body::before {
+  content: ''; position: fixed; inset: 0; z-index: 0;
+  background:
+    radial-gradient(ellipse 80% 50% at 20% 20%, rgba(59,130,246,0.08) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 40% at 80% 80%, rgba(6,182,212,0.06) 0%, transparent 50%);
+  pointer-events: none;
+}
+a { color: var(--blue-light); text-decoration: none; }
+a:hover { text-decoration: underline; }
+img { max-width: 100%; display: block; }
+
+/* --- NAVIGATION --- */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 1rem 3rem;
+  background: rgba(10,15,30,0.88);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-logo { display: flex; align-items: center; gap: 0.75rem; }
+.nav-logo-badge {
+  width: 36px; height: 36px; background: var(--blue); border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 700; font-size: 0.85rem; color: white;
+}
+.nav-logo-text { font-weight: 600; font-size: 1rem; }
+.nav-links { display: flex; gap: 1.8rem; list-style: none; }
+.nav-links a { color: var(--text-muted); font-size: 0.83rem; font-weight: 500; transition: color 0.2s; }
+.nav-links a:hover, .nav-links a.active { color: var(--blue-light); text-decoration: none; }
+
+/* --- SECTION WRAPPER --- */
+.section-wrap {
+  position: relative; z-index: 1;
+  max-width: 1200px; margin: 0 auto; padding: 6rem 3rem;
+}
+.section-label {
+  font-size: 0.72rem; font-weight: 600; letter-spacing: 0.16em;
+  text-transform: uppercase; color: var(--blue-light); margin-bottom: 0.5rem;
+}
+.section-title {
+  font-family: var(--ff-display);
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  font-weight: 700; letter-spacing: -0.02em;
+}
+.section-title span { color: var(--blue-light); }
+.section-line {
+  width: 48px; height: 3px;
+  background: linear-gradient(90deg, var(--blue), var(--cyan));
+  margin-top: 1rem; margin-bottom: 3rem; border-radius: 2px;
+}
+
+/* --- BUTTONS --- */
+.btn {
+  padding: 0.72rem 1.7rem; font-size: 0.85rem; font-weight: 600;
+  cursor: pointer; border: none; transition: all 0.2s;
+  text-decoration: none; display: inline-block; border-radius: 6px;
+}
+.btn-primary { background: var(--blue); color: white; }
+.btn-primary:hover { background: #2563eb; transform: translateY(-1px); text-decoration: none; }
+.btn-outline { background: transparent; color: var(--text); border: 1.5px solid var(--border-bright); }
+.btn-outline:hover { border-color: var(--blue-light); color: var(--blue-light); text-decoration: none; }
+.btn-sm { padding: 0.4rem 1rem; font-size: 0.78rem; }
+
+/* --- CARDS --- */
+.card {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 1.5rem;
+  transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+}
+.card:hover { border-color: var(--blue); transform: translateY(-2px); box-shadow: 0 8px 30px rgba(59,130,246,0.12); }
+
+/* --- TAGS --- */
+.tag {
+  padding: 0.3rem 0.8rem; background: var(--blue-glow);
+  border: 1px solid var(--border); border-radius: 4px;
+  font-size: 0.75rem; font-weight: 500; color: var(--blue-light);
+  display: inline-block;
+}
+.tag-group { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
+
+/* --- HERO --- */
+#hero {
+  position: relative; z-index: 1;
+  min-height: 100vh; display: flex; align-items: center;
+  padding: 8rem 3rem 4rem; max-width: 1200px; margin: 0 auto; gap: 4rem;
+}
+.hero-left { flex: 1; }
+.hero-right { flex: 0 0 380px; display: flex; justify-content: center; }
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  padding: 0.4rem 1rem; background: var(--blue-glow);
+  border: 1px solid var(--border-bright); border-radius: 100px;
+  font-size: 0.78rem; font-weight: 500; color: var(--blue-light); margin-bottom: 1.5rem;
+}
+.hero-badge .pulse { width: 6px; height: 6px; background: var(--cyan); border-radius: 50%; animation: pulse 2s infinite; }
+@keyframes pulse { 0%,100%{opacity:1;} 50%{opacity:0.3;} }
+.hero-title { font-family: var(--ff-display); font-size: clamp(2.2rem, 5vw, 4rem); font-weight: 700; line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 1.2rem; }
+.hero-title .hl { background: linear-gradient(135deg, var(--blue-light), var(--cyan)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.hero-subtitle { color: var(--text-muted); font-size: 1rem; max-width: 480px; margin-bottom: 1.2rem; line-height: 1.75; }
+.hero-role-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 2rem; }
+.role-tag { padding: 0.28rem 0.75rem; background: var(--bg-card2); border: 1px solid var(--border); border-radius: 4px; font-size: 0.76rem; color: var(--text-muted); }
+.hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 3rem; }
+.stats-row { display: flex; gap: 2.5rem; padding-top: 2rem; border-top: 1px solid var(--border); flex-wrap: wrap; }
+.stat-num { font-size: 1.9rem; font-weight: 700; line-height: 1; background: linear-gradient(135deg, var(--blue-light), var(--cyan)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.stat-label { font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; margin-top: 0.2rem; }
+.hero-card { width: 380px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; }
+.hero-card-top { height: 280px; background: linear-gradient(135deg, #1e3a5f, #0f2044); display: flex; align-items: center; justify-content: center; position: relative; }
+.hero-card-top::before { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at 70% 30%, rgba(59,130,246,0.3), transparent 60%); }
+.hero-avatar { width: 200px; height: 200px; border-radius: 50%; background: linear-gradient(135deg, var(--blue), var(--cyan)); display: flex; align-items: center; justify-content: center; font-size: 1.8rem; font-weight: 700; color: white; border: 5px solid rgba(255,255,255,0.35); position: relative; z-index: 1; overflow: hidden; box-shadow: 0 10px 40px rgba(59,130,246,0.35); }
+.hero-avatar img { width: 100%; height: 100%; object-fit: cover; }
+.hero-card-body { padding: 1.3rem; text-align: center; }
+.hero-card-name { font-weight: 700; font-size: 1rem; margin-bottom: 0.25rem; }
+.hero-card-role { font-size: 0.78rem; color: var(--blue-light); margin-bottom: 1rem; }
+.hc-tags { display: flex; flex-wrap: wrap; gap: 0.35rem; justify-content: center; }
+.hc-tag { padding: 0.18rem 0.5rem; background: var(--blue-glow); border: 1px solid var(--border); border-radius: 100px; font-size: 0.68rem; color: var(--blue-light); }
+
+/* --- ABOUT --- */
+.about-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 3rem; }
+.about-text p { color: var(--text-muted); line-height: 1.9; margin-bottom: 1.2rem; }
+.about-text p strong { color: var(--text); }
+.info-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; padding: 1.1rem; margin-bottom: 0.9rem; }
+.info-card h4 { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--blue-light); margin-bottom: 0.35rem; }
+.info-card p { font-size: 0.9rem; font-weight: 500; }
+.lang-chips { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.5rem; }
+.lang-chip { padding: 0.25rem 0.7rem; background: var(--blue-glow); border: 1px solid var(--border); border-radius: 100px; font-size: 0.75rem; color: var(--blue-light); }
+
+/* --- EDUCATION --- */
+.edu-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.2rem; }
+.edu-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.5rem; transition: border-color 0.2s, transform 0.2s; }
+.edu-card:hover { border-color: var(--blue); transform: translateY(-2px); }
+.edu-logo { width: 48px; height: 48px; border-radius: 8px; background: var(--bg-card2); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; margin-bottom: 1rem; overflow: hidden; font-size: 1.2rem; }
+.edu-logo img { width: 100%; height: 100%; object-fit: contain; padding: 4px; }
+.edu-degree { font-weight: 600; font-size: 0.95rem; margin-bottom: 0.2rem; }
+.edu-institution { font-size: 0.85rem; color: var(--blue-light); margin-bottom: 0.25rem; }
+.edu-period { font-size: 0.75rem; color: var(--text-muted); margin-bottom: 0.5rem; }
+.edu-desc { font-size: 0.83rem; color: var(--text-muted); }
+
+/* --- EXPERIENCE TIMELINE --- */
+.timeline { position: relative; padding-left: 2rem; }
+.timeline::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 1px; background: var(--border); }
+.tl-item { position: relative; margin-bottom: 2.5rem; }
+.tl-dot { position: absolute; left: -2.37rem; top: 0.35rem; width: 12px; height: 12px; border-radius: 50%; background: var(--bg-dark); border: 2px solid var(--blue); box-shadow: 0 0 8px var(--blue); }
+.tl-meta { display: flex; gap: 0.75rem; align-items: center; margin-bottom: 0.3rem; flex-wrap: wrap; }
+.tl-date { font-size: 0.74rem; color: var(--text-muted); font-weight: 500; }
+.tl-badge { font-size: 0.65rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; padding: 0.15rem 0.55rem; background: var(--blue-glow); border: 1px solid var(--border); color: var(--blue-light); border-radius: 3px; }
+.tl-role { font-size: 1.1rem; font-weight: 600; margin-bottom: 0.15rem; }
+.tl-org { font-size: 0.87rem; color: var(--blue-light); font-weight: 500; margin-bottom: 0.5rem; }
+.tl-desc { color: var(--text-muted); font-size: 0.87rem; line-height: 1.75; }
+
+/* --- PUBLICATIONS --- */
+.pub-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.2rem; }
+.pub-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.6rem; transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s; }
+.pub-card:hover { border-color: var(--blue); transform: translateY(-3px); box-shadow: 0 8px 30px rgba(59,130,246,0.15); }
+.pub-type { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--blue-light); margin-bottom: 0.7rem; }
+.pub-title { font-size: 0.93rem; font-weight: 600; line-height: 1.45; margin-bottom: 0.5rem; }
+.pub-venue { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 0.9rem; }
+.pub-footer { display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 0.5rem; }
+.pub-tags { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+.pub-tag { font-size: 0.67rem; padding: 0.16rem 0.48rem; background: var(--blue-glow); border: 1px solid var(--border); color: var(--blue-light); border-radius: 3px; }
+
+/* --- PROJECTS --- */
+.project-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.2rem; }
+.project-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.5rem; transition: border-color 0.2s, transform 0.2s; }
+.project-card:hover { border-color: var(--blue); transform: translateY(-2px); }
+.project-status { display: inline-block; font-size: 0.65rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; padding: 0.15rem 0.55rem; border-radius: 100px; margin-bottom: 0.8rem; }
+.status-active { background: rgba(6,182,212,0.15); color: var(--cyan); border: 1px solid rgba(6,182,212,0.3); }
+.status-review { background: rgba(251,191,36,0.12); color: #fbbf24; border: 1px solid rgba(251,191,36,0.25); }
+.project-title { font-weight: 600; font-size: 0.95rem; margin-bottom: 0.4rem; line-height: 1.4; }
+.project-funder { font-size: 0.8rem; color: var(--blue-light); margin-bottom: 0.6rem; }
+.project-desc { font-size: 0.84rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 0.8rem; }
+.project-partners { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+.project-partner { font-size: 0.7rem; padding: 0.15rem 0.5rem; background: var(--bg-card2); border: 1px solid var(--border); color: var(--text-muted); border-radius: 3px; }
+
+/* --- SKILLS --- */
+.skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.4rem; }
+.skill-group { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.4rem; }
+.skill-group h3 { font-size: 0.76rem; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600; color: var(--blue-light); margin-bottom: 1.1rem; padding-bottom: 0.6rem; border-bottom: 1px solid var(--border); }
+.skill-item { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.85rem; }
+.skill-name { font-size: 0.86rem; }
+.skill-bar-wrap { width: 88px; height: 4px; background: var(--bg-card2); border-radius: 2px; flex-shrink: 0; }
+.skill-bar { height: 100%; background: linear-gradient(90deg, var(--blue), var(--cyan)); border-radius: 2px; }
+
+/* --- CERTIFICATES & ACHIEVEMENTS --- */
+.cert-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.2rem; }
+.cert-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.4rem; transition: border-color 0.2s; }
+.cert-card:hover { border-color: var(--blue); }
+.cert-year { font-size: 0.7rem; color: var(--blue-light); font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.4rem; }
+.cert-title { font-weight: 600; font-size: 0.93rem; margin-bottom: 0.2rem; }
+.cert-issuer { font-size: 0.82rem; color: var(--text-muted); }
+.achievement-list { display: flex; flex-direction: column; gap: 1rem; }
+.achievement-item { background: var(--bg-card); border: 1px solid var(--border); border-left: 3px solid var(--blue); border-radius: 0 var(--radius) var(--radius) 0; padding: 1.1rem 1.4rem; }
+.achievement-title { font-weight: 600; margin-bottom: 0.25rem; }
+.achievement-year { font-size: 0.73rem; color: var(--blue-light); margin-bottom: 0.3rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.06em; }
+.achievement-desc { font-size: 0.85rem; color: var(--text-muted); line-height: 1.65; }
+
+/* --- COLLABORATORS --- */
+.collab-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 1.2rem; }
+.collab-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.4rem 1rem; text-align: center; transition: border-color 0.2s, transform 0.2s; }
+.collab-card:hover { border-color: var(--blue); transform: translateY(-2px); }
+.collab-logo { width: 56px; height: 56px; border-radius: 10px; background: var(--bg-card2); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; margin: 0 auto 0.8rem; overflow: hidden; font-size: 1.4rem; }
+.collab-logo img { width: 100%; height: 100%; object-fit: contain; padding: 6px; }
+.collab-name { font-weight: 600; font-size: 0.88rem; margin-bottom: 0.2rem; }
+.collab-role { font-size: 0.75rem; color: var(--blue-light); }
+
+/* --- PHOTOS GALLERY --- */
+.photo-filter { display: flex; gap: 0.6rem; flex-wrap: wrap; margin-bottom: 2rem; }
+.filter-btn { padding: 0.35rem 0.9rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: 100px; font-size: 0.78rem; cursor: pointer; color: var(--text-muted); transition: all 0.2s; }
+.filter-btn:hover, .filter-btn.active { background: var(--blue-glow); border-color: var(--blue-light); color: var(--blue-light); }
+.photo-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 1.2rem; }
+.photo-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; transition: border-color 0.2s, transform 0.2s; }
+.photo-card:hover { border-color: var(--blue); transform: translateY(-2px); }
+.photo-img { width: 100%; height: 190px; object-fit: cover; background: var(--bg-card2); display: flex; align-items: center; justify-content: center; color: var(--text-muted); font-size: 0.82rem; }
+.photo-img img { width: 100%; height: 100%; object-fit: cover; }
+.photo-caption { padding: 1rem 1.1rem; }
+.photo-caption p { font-size: 0.88rem; font-weight: 500; margin-bottom: 0.2rem; }
+.photo-caption small { font-size: 0.76rem; color: var(--text-muted); }
+
+/* --- CONTACT --- */
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; }
+.contact-info h3 { font-family: var(--ff-display); font-size: 1.6rem; font-weight: 700; margin-bottom: 1rem; line-height: 1.3; }
+.contact-info p { color: var(--text-muted); line-height: 1.8; margin-bottom: 1.8rem; }
+.contact-item { display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1.1rem; }
+.contact-icon { width: 38px; height: 38px; background: var(--blue-glow); border: 1px solid var(--border); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; }
+.contact-label { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); }
+.contact-value { font-size: 0.9rem; font-weight: 500; }
+.social-links { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 1.8rem; }
+.social-btn { display: flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: 6px; font-size: 0.8rem; color: var(--text-muted); transition: all 0.2s; text-decoration: none; }
+.social-btn:hover { border-color: var(--blue-light); color: var(--blue-light); text-decoration: none; }
+.form-wrap { display: flex; flex-direction: column; gap: 1rem; }
+.form-field { display: flex; flex-direction: column; gap: 0.35rem; }
+.form-field label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); font-weight: 500; }
+.form-field input, .form-field textarea { padding: 0.72rem 1rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: 6px; font-family: var(--ff-body); font-size: 0.9rem; color: var(--text); outline: none; transition: border-color 0.2s; resize: none; }
+.form-field input:focus, .form-field textarea:focus { border-color: var(--blue); }
+.form-field input::placeholder, .form-field textarea::placeholder { color: var(--text-muted); }
+
+/* --- FOOTER --- */
+footer { position: relative; z-index: 1; text-align: center; padding: 2rem 3rem; border-top: 1px solid var(--border); font-size: 0.8rem; color: var(--text-muted); }
+
+/* --- RESPONSIVE --- */
+@media (max-width: 900px) {
+  .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
+}
+/* --- LIGHTBOX --- */
+.lightbox-overlay {
+  display: none; position: fixed; inset: 0; z-index: 9999;
+  background: rgba(0,0,0,0.92); backdrop-filter: blur(8px);
+  align-items: center; justify-content: center; cursor: zoom-out;
+  animation: fadeIn 0.2s ease;
+}
+.lightbox-overlay.open { display: flex; }
+@keyframes fadeIn { from{opacity:0} to{opacity:1} }
+.lightbox-inner { position: relative; max-width: 90vw; max-height: 90vh; animation: zoomIn 0.25s cubic-bezier(0.34,1.56,0.64,1); }
+@keyframes zoomIn { from{transform:scale(0.85);opacity:0} to{transform:scale(1);opacity:1} }
+.lightbox-inner img { max-width: 90vw; max-height: 80vh; object-fit: contain; border-radius: 12px; box-shadow: 0 25px 80px rgba(0,0,0,0.7); display: block; }
+.lightbox-caption { text-align: center; margin-top: 1rem; color: #f1f5f9; font-size: 0.95rem; font-weight: 500; }
+.lightbox-sub { text-align: center; margin-top: 0.3rem; color: #94a3b8; font-size: 0.82rem; }
+.lightbox-close { position: absolute; top: -14px; right: -14px; width: 32px; height: 32px; background: #3b82f6; border-radius: 50%; border: none; cursor: pointer; color: white; font-size: 1.1rem; display: flex; align-items: center; justify-content: center; transition: background 0.2s; box-shadow: 0 4px 12px rgba(59,130,246,0.5); }
+.lightbox-close:hover { background: #ef4444; }
+.lightbox-nav { position: fixed; top: 50%; transform: translateY(-50%); width: 44px; height: 44px; background: rgba(59,130,246,0.2); border: 1px solid rgba(59,130,246,0.4); border-radius: 50%; color: white; font-size: 1.2rem; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.2s; z-index: 10000; }
+.lightbox-nav:hover { background: rgba(59,130,246,0.5); }
+.lightbox-prev { left: 1.5rem; }
+.lightbox-next { right: 1.5rem; }
+.photo-card { cursor: zoom-in; }
+@media (max-width: 768px) {
+  nav { padding: 1rem 1.5rem; }
+  .nav-links { display: none; }
+  #hero { flex-direction: column; padding: 6rem 1.5rem 3rem; min-height: auto; gap: 2rem; }
+  .hero-right { display: none; }
+  .section-wrap { padding: 4rem 1.5rem; }
+}
+
+</style>
 </head>
 <body>
 
@@ -32,9 +339,9 @@
 <!-- HERO -->
 <div id="hero">
   <div class="hero-left">
-    <div class="hero-badge"><span class="pulse"></span><span id="hero-badge-text"></span></div>
     <h1 class="hero-title" id="hero-title"></h1>
     <p class="hero-subtitle" id="hero-subtitle"></p>
+    <div class="hero-badge"><span class="pulse"></span><span id="hero-badge-text"></span></div>
     <div class="hero-role-tags" id="hero-role-tags"></div>
     <div class="hero-cta">
       <a href="#contact" class="btn btn-primary">Get in Touch</a>
@@ -64,12 +371,15 @@
   <div class="about-grid">
     <div>
       <div id="about-summary"></div>
-      <div class="tag-group" id="about-tags"></div>
     </div>
     <div>
       <div class="info-card"><h4>Current Position</h4><p id="about-position"></p></div>
       <div class="info-card"><h4>Ph.D. Institution</h4><p id="about-education"></p></div>
       <div class="info-card"><h4>Location</h4><p id="about-location"></p></div>
+      <div class="info-card">
+        <h4>Research Areas</h4>
+        <div class="lang-chips" id="about-skills"></div>
+      </div>
       <div class="info-card">
         <h4>Languages</h4>
         <div class="lang-chips" id="about-languages"></div>
@@ -193,21 +503,1071 @@
   <script>document.getElementById('footer-year').textContent = new Date().getFullYear();</script>
 </footer>
 
-<!-- DATA FILES — edit these to update your content -->
-<script src="data/personal.js"></script>
-<script src="data/contact.js"></script>
-<script src="data/about.js"></script>
-<script src="data/education.js"></script>
-<script src="data/experience.js"></script>
-<script src="data/publications.js"></script>
-<script src="data/projects.js"></script>
-<script src="data/skills.js"></script>
-<script src="data/certificates.js"></script>
-<script src="data/collaborators.js"></script>
-<script src="data/photos.js"></script>
 
-<!-- RENDERER — do not edit -->
-<script src="js/render.js"></script>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- =====================================================
+     EDIT YOUR CONTENT BELOW — each section is clearly labelled
+     ===================================================== -->
+<script>
+// ============================================================
+// SECTION 1: PERSONAL INFORMATION
+// ============================================================
+// ============================================================
+//  PERSONAL INFORMATION
+//  Edit this file to update your name, title, photo, and links
+// ============================================================
+
+const PERSONAL = {
+  name:         "Dr. Fahad Ayaz",
+  firstName:    "Fahad",
+  lastName:     "Ayaz",
+  title:        "Postdoctoral Fellow",
+  field:        "Climate Health-Risk Prediction",
+  specialty:    "AI for Healthcare · Radar-based Human Activity Recognition",
+  endorsement:  "UKRI",
+  initials:     "FA",
+
+  // PHOTO — put your photo file in the same folder and write filename here
+  // e.g. "photo.jpg"  — leave empty "" to show initials instead
+  photo: "Profile_Photo.JPG",
+
+  // LANGUAGES
+  languages: [
+    { language: "English", level: "Fluent"  },
+    { language: "Urdu",    level: "Native"  },
+    { language: "Pashto",  level: "Native"  },
+  ],
+
+  // STATS shown on the hero section
+  stats: [
+    { number: "13",  label: "Publications"       },
+    { number: "4+",  label: "Years Research"     },
+    { number: "1",   label: "Active Project"     },
+    { number: "50+", label: "Students Supported" },
+  ],
+};
+
+
+// ============================================================
+// SECTION 2: CONTACT INFORMATION
+// ============================================================
+// ============================================================
+//  CONTACT INFORMATION
+//  Edit this file to update all your contact details & links
+// ============================================================
+
+const CONTACT = {
+  email:       "fahad.ayaz@uws.ac.uk",
+  phone:       "",
+  institution: "University of the West of Scotland",
+  office:      "School of Computing, Engineering and Physical Sciences, Paisley Campus, Paisley, Scotland, UK",
+
+  // SOCIAL & ACADEMIC LINKS
+  links: {
+    linkedin:       "https://www.linkedin.com/in/fahad-ayaz-phd-5741b421b/",
+    googleScholar:  "https://scholar.google.com/citations?user=MqEpd48AAAAJ&hl=en",
+    researchGate:   "https://www.researchgate.net/profile/Fahad-Ayaz",
+    orcid:          "",
+    universityPage: "https://research-portal.uws.ac.uk/en/persons/fahad-ayaz/",
+  },
+};
+
+
+// ============================================================
+// SECTION 3: PROFESSIONAL SUMMARY
+// ============================================================
+// ============================================================
+//  PROFESSIONAL SUMMARY & ABOUT
+//  Edit the paragraphs and research tags below
+// ============================================================
+
+const ABOUT = {
+  summary: [
+    `I am a Postdoctoral Fellow at the University of the West of Scotland within the School of Computing, Engineering and Physical Sciences. 
+    My research sits at the intersection of machine learning, health analytics, data analysis, wireless communication, and environmental monitoring, with a focus on developing intelligent, 
+    data-driven systems with real-world impact. I completed his PhD in AI for healthcare applications at the University of Glasgow, where his doctoral work focused on privacy-preserving, 
+    edge-optimised, non-invasive human activity recognition using IoT-enabled smart sensing. 
+
+    This work developed novel approaches for deploying AI at the edge in low-power, privacy-aware, and real-time environments, 
+    forming the foundation for his current applied research. I am currently contributing to the multi-institutional WEATHER Project, 
+    where I lead the design and development of AI-driven early warning systems for extreme weather events and their associated health risks. 
+
+    My responsibilities span the full system pipeline, including sensor data ingestion, machine learning model development, and real-world deployment, 
+    alongside engagement with interdisciplinary stakeholder. I am working closely with collaborators across academia and industry to ensure that developed systems are both technically robust and 
+    operationally viable, particularly within the climate-vulnerable deployment region of KwaZulu-Natal, South Africa. 
+    
+    My broader research interests include 
+    interpretable and responsible AI, edge computing for healthcare applications, non-invasive and environmental sensing systems, and the application of machine learning to climate-health challenges. 
+    I am committed to developing scalable, socially impactful AI solutions that enhance human well-being and build community resilience to climate-related health risks.`,
+  ],
+
+  tags: [
+    "Signal Processing",
+    "Data Analysis",
+    "Edge AI",
+    "IoT",
+    "Healthcare AI",
+    "LLM",
+    "Agentic AI",
+    "Quantum Computing",
+  ],
+};
+
+
+// ============================================================
+// SECTION 4: EDUCATION
+// ============================================================
+// ============================================================
+//  EDUCATION
+//  Add or remove entries. Each entry has a logo, degree, institution, and URL.
+// ============================================================
+
+const EDUCATION = [
+  {
+    degree:      "Doctor of Philosophy (PhD), Electrical & Electronics Engineering",
+    institution: "University of Glasgow",
+    period:      "Jun 2021 – Jun 2025",
+    description: "Dissertation: Non-Invasive AI-driven Human Activity Recognition. Supervised by Dr Ahmed Zoha.",
+    logo: "glasgow.png",
+    url:         "https://www.gla.ac.uk/",
+  },
+  {
+    degree:      "Master of Science (MS), Electrical Engineering",
+    institution: "Abasyn University Peshawar Campus, Pakistan",
+    period:      "Sep 2018 – May 2021",
+    description: "GPA: 3.64 / 4.0. Thesis: Sensorless Backstepping control technique for PMSG based WECS. Key courses: Machine Learning, Wireless Communication, Advanced Engineering Mathematics, Optical Communication.",
+    logo:        "Abasyn.jpg",
+    url:         "https://www.abasyn.edu.pk/",
+  },
+  {
+    degree:      "Bachelor of Science, Electronics",
+    institution: "Islamia College University Peshawar",
+    period:      "Sep 2012 – Jun 2016",
+    description: "GPA: 3.58 / 4.0. Final Year Project: Low Power Inverter. Projects related to Electronics.",
+    logo:        "Islamia.jpeg",
+    url:         "https://www.icp.edu.pk/",
+  },
+  {
+    degree:      "Diploma in Information Technology (IT)",
+    institution: "Govt College Peshawar",
+    period:      "Feb 2020 – Mar 2021",
+    description: "Grade: A",
+    logo:        "Govt.jpg",
+    url:         "",
+  },
+];
+
+
+// ============================================================
+// SECTION 5: EXPERIENCE
+// ============================================================
+// ============================================================
+//  PROFESSIONAL EXPERIENCE
+//  Add or remove entries. Most recent first.
+// ============================================================
+
+const EXPERIENCE = [
+  {
+    role:        "Postdoctoral Fellow",
+    institution: "University of the West of Scotland · Full-time",
+    period:      "Mar 2025 - Present",
+    badge:       "Current",
+    description: `Working on the multi-collaborative WEATHER Project, contributing to the development
+                  of an AI-driven Early Health Warning System aimed at predicting health risks
+                  associated with extreme weather events. Designing and implementing predictive
+                  algorithms using environmental and health data to anticipate disease outbreaks
+                  and symptoms. Supporting the integration of these models into a user-friendly
+                  mobile and dashboard-based alert system for vulnerable communities.`,
+    logo: "https://upload.wikimedia.org/wikipedia/en/thumb/b/b8/University_of_the_West_of_Scotland_logo.svg/200px-University_of_the_West_of_Scotland_logo.svg.png",
+
+    url:         "https://research-portal.uws.ac.uk/en/persons/fahad-ayaz/",
+  },
+  {
+    role:        "PhD Student (Tutor)",
+    institution: "University of Glasgow · Part-time",
+    period:      "May 2023 - Apr 2025",
+    badge:       "Teaching",
+    description: `GTA position working in a team for MOOC (Massive Open Online Courses) project
+                  on a contract basis. Also working at Grade 6 as Tutor for master level courses.`,
+    url:         "https://www.gla.ac.uk/",
+  },
+  {
+    role:        "Demonstrator",
+    institution: "University of Glasgow · Hybrid",
+    period:      "Sep 2021 - Mar 2025",
+    badge:       "Teaching",
+    description: "Demonstrator role supporting undergraduate and postgraduate laboratory sessions and coursework.",
+    url:         "https://www.gla.ac.uk/",
+  },
+  {
+    role:        "Research Assistant",
+    institution: "James Watt School of Engineering, University of Glasgow",
+    period:      "Sep 2024 - Mar 2025",
+    badge:       "Research",
+    description: `Project: Enabling Secure and Efficient Federated Learning through Lightweight Anomaly Detection Mechanism for Edge Devices in 5G/6G Networks`,
+    url:         "https://www.gla.ac.uk/",
+  },
+  {
+    role:        "Research Assistant",
+    institution: "James Watt School of Engineering, University of Glasgow",
+    period:      "Sep 2021 - Sep 2022",
+    badge:       "Research",
+    description: `Project: 5G New Thinking Shared Spectrum Rural Network (5G-SSRN)`,
+    url:         "https://www.gla.ac.uk/",
+  },
+  {
+    role:        "Senior Principal",
+    institution: "The Global Model High School Peshawar · Full-time",
+    period:      "Feb 2019 - May 2021",
+    badge:       "Leadership",
+    description: "Senior leadership role at a high school in Peshawar, Khyber Pakhtunkhwa, Pakistan.",
+    url:         "",
+  },
+  {
+    role:        "Science Teacher",
+    institution: "Police Public School Peshawar · Full-time",
+    period:      "Jan 2018 - Aug 2018",
+    badge:       "Teaching",
+    description: "Teacher of Physics and Mathematics for higher classes.",
+    url:         "",
+  },
+];
+
+
+// ============================================================
+// SECTION 6: PUBLICATIONS
+// ============================================================
+// ============================================================
+//  RESEARCH PUBLICATIONS
+//  Add or remove entries. Most recent first.
+//  type options: "Journal" | "Conference" | "Book Chapter" | "Preprint" | "Ongoing"
+// ============================================================
+
+const PUBLICATIONS = [
+  {
+    type:    "Journal",
+    year:    "2026",
+    title:   "Benchmarking radar preprocessing techniques and transfer learning models for FMCW-based human activity recognition",
+    venue:   "Pervasive and Mobile Computing, 102198",
+    tags:    ["Radar", "Transfer Learning", "HAR", "FMCW"],
+    url:     "https://scholar.google.com/citations?user=MqEpd48AAAAJ&hl=en",
+  },
+  {
+    type:    "Conference",
+    year:    "2025",
+    title:   "Non-Invasive Driver Activity Recognition using mmWave Radar",
+    venue:   "2025 Conference",
+    tags:    ["mmWave Radar", "Driver Monitoring", "Activity Recognition"],
+    url:     "https://scholar.google.com/citations?user=MqEpd48AAAAJ&hl=en",
+  },
+  {
+    type:    "Journal",
+    year:    "2025",
+    title:   "Radar signal processing and its impact on deep learning-driven human activity recognition",
+    venue:   "Sensors 25 (3), 724",
+    tags:    ["Radar", "Deep Learning", "Signal Processing", "HAR"],
+    url:     "https://scholar.google.com/citations?user=MqEpd48AAAAJ&hl=en",
+  },
+  {
+    type:    "Conference",
+    year:    "2025",
+    title:   "Multimodal Fusion of Heart Rate and Gaze Data For Real-Time Driver Monitoring in Naturalistic Driving",
+    venue:   "2025 Conference",
+    tags:    ["Multimodal", "Driver Monitoring", "Heart Rate", "Gaze"],
+    url:     "https://scholar.google.com/citations?user=MqEpd48AAAAJ&hl=en",
+  },
+  {
+    type:    "Thesis",
+    year:    "2025",
+    title:   "Non-invasive AI-driven human activity recognition",
+    venue:   "University of Glasgow",
+    tags:    ["AI", "HAR", "Non-Invasive", "Edge AI"],
+    url:     "https://scholar.google.com/citations?user=MqEpd48AAAAJ&hl=en",
+  },
+  {
+    type:    "Book Chapter",
+    year:    "2024",
+    title:   "Hybrid Neuromorphic-Federated Learning for Activity Recognition Using Multi-modal Wearable Sensors",
+    venue:   "Multimodal Intelligent Sensing in Modern Applications, pp. 133–164",
+    tags:    ["Federated Learning", "Neuromorphic", "Wearable Sensors"],
+    url:     "https://scholar.google.com/citations?user=MqEpd48AAAAJ&hl=en",
+  },
+  {
+    type:    "Preprint",
+    year:    "2024",
+    title:   "Radar signal processing and its impact on deep learning-driven human activity recognition",
+    venue:   "Preprints",
+    tags:    ["Radar", "Deep Learning", "HAR"],
+    url:     "https://scholar.google.com/citations?user=MqEpd48AAAAJ&hl=en",
+  },
+  {
+    type:    "Conference",
+    year:    "2024",
+    title:   "Integrating millimeter-wave FMCW radar for investigating multi-height vital sign monitoring",
+    venue:   "2024 IEEE Wireless Communications and Networking Conference (WCNC), 1–6",
+    tags:    ["FMCW Radar", "Vital Signs", "mmWave", "IEEE"],
+    url:     "https://scholar.google.com/citations?user=MqEpd48AAAAJ&hl=en",
+  },
+  {
+    type:    "Journal",
+    year:    "2023",
+    title:   "A privacy and energy-aware federated framework for human activity recognition",
+    venue:   "Sensors 23 (23), 9339",
+    tags:    ["Federated Learning", "Privacy", "Energy-Aware", "HAR"],
+    url:     "https://scholar.google.com/citations?user=MqEpd48AAAAJ&hl=en",
+  },
+  {
+    type:    "Conference",
+    year:    "2023",
+    title:   "VMD integrated FMCW radar system for non-invasive pediatric vital sign estimation",
+    venue:   "2023 IEEE 28th International Workshop on Computer Aided Modeling and Design",
+    tags:    ["VMD", "FMCW", "Vital Signs", "Pediatric"],
+    url:     "https://scholar.google.com/citations?user=MqEpd48AAAAJ&hl=en",
+  },
+  {
+    type:    "Conference",
+    year:    "2022",
+    title:   "Solar energy systems design in 2D and 3D: A comparison of user vital signs",
+    venue:   "2022 29th IEEE International Conference on Electronics, Circuits and Systems",
+    tags:    ["Solar Energy", "Vital Signs", "IEEE ICECS"],
+    url:     "https://scholar.google.com/citations?user=MqEpd48AAAAJ&hl=en",
+  },
+  {
+    type:    "Conference",
+    year:    "2022",
+    title:   "Contact-free vital sign estimation using ultra-wide band radar",
+    venue:   "2022 29th IEEE International Conference on Electronics, Circuits and Systems",
+    tags:    ["UWB Radar", "Vital Signs", "Contact-free"],
+    url:     "https://scholar.google.com/citations?user=MqEpd48AAAAJ&hl=en",
+  },
+  {
+    type:    "Conference",
+    year:    "2022",
+    title:   "FedClamp: an Algorithm for Identification of Anomalous Client in Federated Learning",
+    venue:   "2022 IEEE Conference",
+    tags:    ["Federated Learning", "Anomaly Detection", "FedClamp"],
+    url:     "https://scholar.google.com/citations?user=MqEpd48AAAAJ&hl=en",
+  },
+];
+
+
+// ============================================================
+// SECTION 7: ONGOING PROJECTS
+// ============================================================
+// ============================================================
+//  ONGOING / CURRENT PROJECTS
+//  Add or remove entries.
+// ============================================================
+
+const PROJECTS = [
+  {
+    title:       "WEATHER Project — AI-driven Early Health Warning System",
+    funder:      "NIHR (National Institute for Health and Care Research)",
+    partners:    ["UWS", "University of Strathclyde", "University of KwaZulu-Natal", "University of Portsmouth", "RCSI"],
+    description: "Developing a Predictive Warning System Intervention integrating low-cost environmental sensors, ML models, real-time data pipelines, and health risk assessment frameworks to predict extreme weather events and health risks in climate-vulnerable regions.",
+    status:      "Active",
+    url:         "https://fundingawards.nihr.ac.uk/award/NIHR204825",
+  },
+  {
+    title:       "IoT & ML-enabled Estimation of Health Indicators from Ambient Data",
+    funder:      "University of the West of Scotland",
+    partners:    ["UWS", "NHS Scotland"],
+    description: "A non-invasive, IoT-based and ML-driven system that estimates key physiological health indicators using everyday environmental data.",
+    status:      "Active",
+    url:         "",
+  },
+];
+
+
+// ============================================================
+// SECTION 8: SKILLS
+// ============================================================
+// ============================================================
+//  TECHNICAL SKILLS
+//  Each group has a title and a list of skills with percentages (0-100).
+// ============================================================
+
+const SKILLS = [
+  {
+    group: "AI & Machine Learning",
+    items: [
+      { name: "Python (TensorFlow, Scikit-learn)", percent: 95 },
+      { name: "Computer Vision",                   percent: 90 },
+      { name: "Risk Prediction & Anomaly Detection", percent: 85 },
+    ],
+  },
+  {
+    group: "Wireless Communications",
+    items: [
+      { name: "5G/6G Systems",            percent: 95 },
+      { name: "Radar Communication",      percent: 95 },
+    ],
+  },
+  {
+    group: "Hardware",
+    items: [
+      { name: "USRP (N210, X410, X440)", percent: 90 },
+      { name: "Raspberry Pi",         percent: 90 },
+      { name: "Jetson Nano",             percent: 85 },
+      { name: "RF Signal Processing",    percent: 88 },
+    ],
+  },
+  {
+    group: "Programming Languages",
+    items: [
+      { name: "Python", percent: 96 },
+      { name: "MATLAB", percent: 90 },
+    ],
+  },
+  {
+    group: "Research & Teaching",
+    items: [
+      { name: "Curriculum Design",   percent: 92 },
+      { name: "Grant Writing",       percent: 85 },
+      { name: "Academic Publishing", percent: 95 },
+      { name: "Student Supervision", percent: 90 },
+    ],
+  },
+];
+
+
+// ============================================================
+// SECTION 9: CERTIFICATES, AWARDS & ACHIEVEMENTS
+// ============================================================
+// ============================================================
+//  CERTIFICATES & ACHIEVEMENTS
+//  Add certificates, awards, honours, and achievements here.
+// ============================================================
+
+// --- CERTIFICATES ---
+const CERTIFICATES = [
+  {
+    title:  "Merit Certificate",
+    issuer: "Prime Minister's Scheme for Private Sector",
+    year:   "2021",
+    image:  "Merit_Certificate.png",
+    url:    "",
+  },
+  {
+    title:  "PhD Selection",
+    issuer: "Prime Minister's Scheme",
+    year:   "2021",
+    image:  "PhD_Selection.png",
+    url:    "",
+  },
+  {
+    title:  "CCNA (Cisco Certified Network Associate)",
+    issuer: "Cisco",
+    year:   "",
+    image:  "CISCO.jpg",
+    url:    "",
+  },
+  {
+    title:  "IEEE Authorship and Open Access Symposium",
+    issuer: "IEEE",
+    year:   "Feb 2026",
+    image:  "IEEE_Authorship.png",
+    url:    "https://www.ieee.org/",
+  },
+  {
+    title:  "Publishing and Funding Your Global Health Research",
+    issuer: "NIHR / INASP Rising Scholars",
+    year:   "Mar 2026",
+    image:  "",
+    url:    "https://learn.inasp.info/mod/customcert/verify_certificate.php",
+  },
+  {
+    title:  "Data Management",
+    issuer: "University of Glasgow",
+    year:   "",
+    image:  "",
+    url:    "https://www.gla.ac.uk/",
+  },
+  {
+    title:  "Machine Learning",
+    issuer: "University of Glasgow",
+    year:   "",
+    image:  "",
+    url:    "https://www.gla.ac.uk/",
+  },
+  {
+    title:  "Python Programming",
+    issuer: "University of Glasgow",
+    year:   "",
+    image:  "",
+    url:    "https://www.gla.ac.uk/",
+  },
+];
+
+// --- AWARDS & HONOURS ---
+const AWARDS = [
+  {
+    title:       "Global Talent",
+    body:        "UK Research and Innovation",
+    year:        "2025",
+    description: "Endorsed as an exceptional and internationally recognised research talent in AI and wireless communications.",
+    url:         "https://www.ukri.org/",
+  },
+  {
+    title:       "University of Glasgow Sponsorship",
+    body:        "University of Glasgow",
+    year:        "Dec 2022",
+    description: "Sponsorship support from the University of Glasgow enabling continuation of PhD research and educational goals.",
+    url:         "https://www.gla.ac.uk/",
+  },
+  {
+    title:       "Fully Funded PhD Scholarship",
+    body:        "Government of Pakistan",
+    year:        "Jun 2021",
+    description: "Awarded a fully funded scholarship for PhD study at a top-100 world university. Selected among 900 applicants from across Pakistan.",
+    url:         "https://www.hec.gov.pk/",
+  },
+];
+
+// --- ACHIEVEMENTS ---
+const ACHIEVEMENTS = [
+  {
+    title:       "PhD Thesis Successfully Defended",
+    year:        "2025",
+    description: "Successfully defended PhD thesis on AI-driven radar-based human activity recognition at the University of Glasgow. Examined by Prof. Muhammad Mahtab Alam, Dr. Masood Ur Rehman, and Dr. Muhammad Aslam.",
+  },
+  {
+    title:       "Guest Lecturer — MSc Emerging Topics in Computing",
+    year:        "Mar 2026",
+    description: "Delivered a guest lecture on AI for Climate-Health Risk Prediction at UWS, sharing insights from the NIHR-funded WEATHER project to MSc students.",
+  },
+  {
+    title:       "Ayrshire Health & Social Care Innovation Workshop",
+    year:        "2025",
+    description: "Represented UWS School of CEPS, showcasing the NIHR WEATHER Project and IoT/ML-enabled health monitoring research to NHS, industry, and academia.",
+  },
+  {
+    title:       "Student Volunteer — IEEE WCNC",
+    year:        "Mar 2023",
+    description: "Volunteered at the IEEE Wireless Communications and Networking Conference (WCNC), contributing to event organisation and technical sessions.",
+  },
+  {
+    title:       "Selected Among Top 900 PhD Scholars Nationwide",
+    year:        "2021",
+    description: "Competitively selected from approximately 900 applicants across Pakistan for a fully funded government PhD scholarship at a globally ranked institution.",
+  },
+  {
+    title:       "Credential: NIHR Global Health Research",
+    year:        "2026",
+    description: "Credential ID: eKQFOFFyXT. Certified in Publishing and Funding Your Global Health Research by NIHR, valid until Mar 2036.",
+  },
+];
+
+
+// ============================================================
+// SECTION 10: COLLABORATORS & PARTNERS
+// ============================================================
+// ============================================================
+//  COLLABORATORS & PARTNERS
+//  Add institutions and organisations you work with.
+// ============================================================
+
+const COLLABORATORS = [
+  { name: "University of the West of Scotland (UWS)", role: "Host Institution", logo: "", url: "https://www.uws.ac.uk/" },
+  { name: "University of Glasgow", role: "PhD Institution & Research Partner", logo: "", url: "https://www.gla.ac.uk/" },
+  { name: "University of Strathclyde Glasgow", role: "WEATHER Project Partner", logo: "", url: "https://www.strath.ac.uk/" },
+  { name: "University of KwaZulu-Natal", role: "WEATHER Project Partner", logo: "", url: "https://www.ukzn.ac.za/" },
+  { name: "University of Portsmouth", role: "WEATHER Project Partner", logo: "", url: "https://www.port.ac.uk/" },
+  { name: "Royal College of Surgeons in Ireland (RCSI)", role: "WEATHER Project Partner", logo: "", url: "https://www.rcsi.com/" },
+  { name: "NIHR", role: "Funding Body — WEATHER Project", logo: "", url: "https://www.nihr.ac.uk/" },
+  { name: "NHS Scotland", role: "Healthcare Partner", logo: "", url: "https://www.nhsinform.scot/" },
+];
+
+
+// ============================================================
+// SECTION 11: PAST EVENT PHOTOS
+// ============================================================
+// ============================================================
+//  PAST EVENT PHOTOS
+//  Add your photos here. Put image files in the "photos/" folder
+//  and write the filename in the "file" field below.
+//  category options: "Graduation" | "Award" | "Conference" | "Research" | "Other"
+// ============================================================
+
+const PHOTOS = [
+  {
+    file:     "graduation.jpg",
+    caption:  "PhD Graduation — James Watt School of Engineering",
+    location: "University of Glasgow, Scotland",
+    year:     "2025",
+    category: "Graduation",
+  },
+  {
+    file:     "weather_lecture.jpg",
+    caption:  "Guest Lecture: AI for Climate-Health Risk Prediction — WEATHER Project",
+    location: "University of the West of Scotland, Paisley",
+    year:     "2026",
+    category: "Conference",
+  },
+  {
+    file:     "ayrshire_workshop.jpg",
+    caption:  "Ayrshire Health and Social Care Innovation Workshop — NIHR WEATHER Project showcase",
+    location: "UWS Ayr Campus, Ayrshire, Scotland",
+    year:     "2025",
+    category: "Research",
+  },
+  {
+    file:     "phd_defense.jpg",
+    caption:  "PhD Viva — Research team meeting with supervisors and examiners",
+    location: "University of Glasgow, Scotland",
+    year:     "2025",
+    category: "Research",
+  },
+];
+
+
+// ============================================================
+// PAGE RENDERER — do not edit below this line
+// ============================================================
+// ============================================================
+//  RENDER.JS — Builds the page from your data files
+//  You do NOT need to edit this file.
+// ============================================================
+
+// ---------- HELPERS ----------
+const el = (tag, cls, html) => {
+  const e = document.createElement(tag);
+  if (cls) e.className = cls;
+  if (html) e.innerHTML = html;
+  return e;
+};
+const q = id => document.getElementById(id);
+
+// ---------- HERO ----------
+function renderHero() {
+  const p = PERSONAL;
+  q('hero-badge-text').textContent =
+    `Endorsed Global Talent · ${p.endorsement}`;
+  q('hero-title').innerHTML =
+    `Dr. <span class="hl">${p.firstName}</span> ${p.lastName}`
+  q('hero-subtitle').innerHTML =
+    `<strong>Postdoctoral Fellow</strong> · PhD in Electronics & Electrical Engineering`;
+
+  // role tags from about tags
+  const tagWrap = q('hero-role-tags');
+  ['Climate Health-Risk Prediction', 'AI for Healthcare', 'Radar-based HAR'].forEach(t => {
+    const s = document.createElement('span');
+    s.className = 'role-tag'; s.textContent = t;
+    tagWrap.appendChild(s);
+  });
+
+  // stats
+  const statsRow = q('hero-stats');
+  p.stats.forEach(s => {
+    statsRow.innerHTML += `
+      <div>
+        <div class="stat-num">${s.number}</div>
+        <div class="stat-label">${s.label}</div>
+      </div>`;
+  });
+
+  // hero card
+  q('hero-card-name').textContent = p.name;
+  q('hero-card-role').textContent = p.title;
+  const avatar = q('hero-avatar');
+  if (p.photo) {
+    avatar.innerHTML = `<img src="photos/${p.photo}" alt="${p.name}" />`;
+  } else {
+    avatar.textContent = p.initials;
+  }
+  const hcTags = q('hero-card-tags');
+  hcTags.innerHTML = '';
+}
+
+// ---------- ABOUT ----------
+function renderAbout() {
+  const summaryEl = q('about-summary');
+  ABOUT.summary.forEach(para => {
+    const p = document.createElement('p');
+    p.innerHTML = para;
+    summaryEl.appendChild(p);
+  });
+
+  // sidebar info
+  q('about-position').textContent =
+    `${EXPERIENCE[0]?.role || ''} at ${EXPERIENCE[0]?.institution || ''}`;
+  q('about-education').textContent =
+    EDUCATION[0]?.institution || '';
+  q('about-location').textContent =
+    CONTACT.institution + ', UK';
+
+  // languages
+  const langEl = q('about-languages');
+  PERSONAL.languages.forEach(l => {
+    const s = document.createElement('span');
+    s.className = 'lang-chip';
+    s.textContent = `${l.language} — ${l.level}`;
+    langEl.appendChild(s);
+  });
+
+  // research areas (from ABOUT.tags)
+  const skillEl = q('about-skills');
+  ABOUT.tags.forEach(t => {
+    const s = document.createElement('span');
+    s.className = 'lang-chip';
+    s.textContent = t;
+    skillEl.appendChild(s);
+  });
+}
+
+// ---------- EDUCATION ----------
+function renderEducation() {
+  const grid = q('education-grid');
+  EDUCATION.forEach(e => {
+    const card = document.createElement('a');
+    card.className = 'edu-card';
+    card.href = e.url || '#';
+    if (e.url) card.target = '_blank';
+    card.style.textDecoration = 'none'; card.style.color = 'inherit';
+    const logoSrc = e.logo 
+      ? (e.logo.startsWith('http') ? e.logo : `Logos/${e.logo}`)
+      : '';
+    const logoHtml = logoSrc 
+      ? `<img src="${logoSrc}" alt="${e.institution}" style="padding:4px;" />`
+      : '🎓';
+    card.innerHTML = `
+      <div class="edu-logo">
+        ${logoHtml}
+      </div>
+      <div class="edu-degree">${e.degree}</div>
+      <div class="edu-institution">${e.institution}</div>
+      <div class="edu-period">${e.period}</div>
+      <div class="edu-desc">${e.description}</div>`;
+    grid.appendChild(card);
+  });
+}
+
+// ---------- EXPERIENCE ----------
+function renderExperience() {
+  const timeline = q('experience-timeline');
+  EXPERIENCE.forEach(e => {
+    timeline.innerHTML += `
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-meta">
+          <span class="tl-date">${e.period}</span>
+          <span class="tl-badge">${e.badge}</span>
+        </div>
+        <div class="tl-role">${e.url
+          ? `<a href="${e.url}" target="_blank" style="color:inherit;text-decoration:none">${e.role}</a>`
+          : e.role}</div>
+        <div class="tl-org">${e.institution}</div>
+        <div class="tl-desc">${e.description}</div>
+      </div>`;
+  });
+}
+
+// ---------- PUBLICATIONS ----------
+function renderPublications() {
+  const grid = q('pub-grid');
+  PUBLICATIONS.forEach(p => {
+    grid.innerHTML += `
+      <div class="pub-card">
+        <div class="pub-type">${p.type} · ${p.year}</div>
+        <div class="pub-title">${p.url
+          ? `<a href="${p.url}" target="_blank" style="color:inherit">${p.title}</a>`
+          : p.title}</div>
+        <div class="pub-venue">${p.venue}</div>
+        <div class="pub-footer">
+          <div class="pub-tags">
+            ${p.tags.map(t => `<span class="pub-tag">${t}</span>`).join('')}
+          </div>
+          ${p.url ? `<a href="${p.url}" target="_blank" class="btn btn-sm btn-outline">View ↗</a>` : ''}
+        </div>
+      </div>`;
+  });
+}
+
+// ---------- PROJECTS ----------
+function renderProjects() {
+  const grid = q('projects-grid');
+  PROJECTS.forEach(p => {
+    const statusClass = p.status === 'Active' ? 'status-active' : 'status-review';
+    grid.innerHTML += `
+      <div class="project-card">
+        <span class="project-status ${statusClass}">${p.status}</span>
+        <div class="project-title">${p.url
+          ? `<a href="${p.url}" target="_blank" style="color:inherit">${p.title}</a>`
+          : p.title}</div>
+        ${p.funder ? `<div class="project-funder">${p.funder}</div>` : ''}
+        <div class="project-desc">${p.description}</div>
+        ${p.partners.length
+          ? `<div class="project-partners">${p.partners.map(pt =>
+              `<span class="project-partner">${pt}</span>`).join('')}</div>`
+          : ''}
+      </div>`;
+  });
+}
+
+// ---------- SKILLS ----------
+function renderSkills() {
+  const grid = q('skills-grid');
+  SKILLS.forEach(group => {
+    let itemsHtml = group.items.map(s => `
+      <div class="skill-item">
+        <span class="skill-name">${s.name}</span>
+        <div class="skill-bar-wrap">
+          <div class="skill-bar" style="width:${s.percent}%"></div>
+        </div>
+      </div>`).join('');
+    grid.innerHTML += `
+      <div class="skill-group">
+        <h3>${group.group}</h3>
+        ${itemsHtml}
+      </div>`;
+  });
+}
+
+// ---------- CERTIFICATES & ACHIEVEMENTS ----------
+function renderCertificates() {
+  const certGrid = q('cert-grid');
+  CERTIFICATES.forEach(c => {
+    const certImage = c.image 
+      ? `<img src="Certificates/${c.image}" alt="${c.title}" style="width:100%;max-height:120px;object-fit:contain;margin-bottom:0.8rem;border-radius:6px;" />`
+      : '';
+    certGrid.innerHTML += `
+      <div class="cert-card">
+        ${certImage}
+        <div class="cert-year">${c.year}</div>
+        <div class="cert-title">${c.url
+          ? `<a href="${c.url}" target="_blank" style="color:inherit">${c.title}</a>`
+          : c.title}</div>
+        <div class="cert-issuer">${c.issuer}</div>
+      </div>`;
+  });
+
+  const awardGrid = q('awards-grid');
+  AWARDS.forEach(a => {
+    awardGrid.innerHTML += `
+      <div class="cert-card">
+        <div class="cert-year">${a.year}</div>
+        <div class="cert-title">${a.url
+          ? `<a href="${a.url}" target="_blank" style="color:inherit">${a.title}</a>`
+          : a.title}</div>
+        <div class="cert-issuer">${a.body}</div>
+        <p style="font-size:0.82rem;color:var(--text-muted);margin-top:0.5rem">${a.description}</p>
+      </div>`;
+  });
+
+  const achList = q('achievements-list');
+  ACHIEVEMENTS.forEach(a => {
+    achList.innerHTML += `
+      <div class="achievement-item">
+        <div class="achievement-year">${a.year}</div>
+        <div class="achievement-title">${a.title}</div>
+        <div class="achievement-desc">${a.description}</div>
+      </div>`;
+  });
+}
+
+// ---------- COLLABORATORS ----------
+function renderCollaborators() {
+  const grid = q('collab-grid');
+  COLLABORATORS.forEach(c => {
+    grid.innerHTML += `
+      <a class="collab-card" href="${c.url || '#'}" target="${c.url ? '_blank' : ''}"
+         style="text-decoration:none;color:inherit">
+        <div class="collab-logo">
+          ${c.logo
+            ? `<img src="${c.logo}" alt="${c.name}" />`
+            : '🏛️'}
+        </div>
+        <div class="collab-name">${c.name}</div>
+        <div class="collab-role">${c.role}</div>
+      </a>`;
+  });
+}
+
+// ---------- PHOTOS ----------
+function renderPhotos() {
+  const grid = q('photo-grid');
+  const filterWrap = q('photo-filter');
+  const categories = ['All', ...new Set(PHOTOS.map(p => p.category))];
+
+  categories.forEach((cat, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'filter-btn' + (i === 0 ? ' active' : '');
+    btn.textContent = cat;
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      filterPhotos(cat === 'All' ? null : cat);
+    });
+    filterWrap.appendChild(btn);
+  });
+
+  PHOTOS.forEach(p => {
+    const card = document.createElement('div');
+    card.className = 'photo-card';
+    card.dataset.category = p.category;
+    card.innerHTML = `
+      <div class="photo-img">
+        <img src="photos/${p.file}" alt="${p.caption}"
+             onerror="this.parentElement.textContent='📷 ${p.caption}'" />
+      </div>
+      <div class="photo-caption">
+        <p>${p.caption}</p>
+        <small>${p.location} · ${p.year}</small>
+      </div>`;
+    grid.appendChild(card);
+  });
+}
+
+function filterPhotos(category) {
+  document.querySelectorAll('.photo-card').forEach(card => {
+    card.style.display = (!category || card.dataset.category === category)
+      ? '' : 'none';
+  });
+}
+
+// ---------- CONTACT ----------
+function renderContact() {
+  const c = CONTACT;
+  q('contact-email').textContent = c.email;
+  q('contact-email').href = `mailto:${c.email}`;
+  q('contact-phone').textContent = c.phone;
+  q('contact-institution').textContent = c.institution;
+  q('contact-office').textContent = c.office;
+
+  const socialWrap = q('social-links');
+  const socialDefs = [
+    { key: 'linkedin',      label: 'LinkedIn',       icon: '🔗' },
+    { key: 'googleScholar', label: 'Google Scholar',  icon: '📚' },
+    { key: 'researchGate',  label: 'ResearchGate',    icon: '🔬' },
+    { key: 'orcid',         label: 'ORCID',           icon: '🆔' },
+    { key: 'universityPage',label: 'University Page', icon: '🏛️' },
+  ];
+  socialDefs.forEach(s => {
+    if (c.links[s.key]) {
+      socialWrap.innerHTML += `
+        <a href="${c.links[s.key]}" target="_blank" class="social-btn">
+          ${s.icon} ${s.label}
+        </a>`;
+    }
+  });
+}
+
+// ---------- FOOTER ----------
+function renderFooter() {
+  q('footer-name').textContent = PERSONAL.name;
+}
+
+// ---------- NAV --- Active link highlight on scroll ----------
+function initScrollSpy() {
+  const sections = document.querySelectorAll('[data-section]');
+  const links = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 120) current = s.dataset.section;
+    });
+    links.forEach(l => {
+      l.classList.toggle('active', l.getAttribute('href') === `#${current}`);
+    });
+  });
+}
+
+// ---------- BOOT ----------
+document.addEventListener('DOMContentLoaded', () => {
+  renderHero();
+  renderAbout();
+  renderEducation();
+  renderExperience();
+  renderPublications();
+  renderProjects();
+  renderSkills();
+  renderCertificates();
+  renderCollaborators();
+  renderPhotos();
+  renderContact();
+  renderFooter();
+  initScrollSpy();
+});
+
+</script>
+<div class="lightbox-overlay" id="lightbox" onclick="closeLightbox(event)">
+  <button class="lightbox-nav lightbox-prev" onclick="event.stopPropagation();changePhoto(-1)">&#8592;</button>
+  <div class="lightbox-inner" onclick="event.stopPropagation()">
+    <button class="lightbox-close" onclick="closeLightbox()">&#10005;</button>
+    <img id="lightbox-img" src="" alt="" />
+    <div class="lightbox-caption" id="lightbox-caption"></div>
+    <div class="lightbox-sub" id="lightbox-sub"></div>
+  </div>
+  <button class="lightbox-nav lightbox-next" onclick="event.stopPropagation();changePhoto(1)">&#8594;</button>
+</div>
+
+<script>
+let lightboxIndex = 0;
+let lightboxPhotos = [];
+
+function openLightbox(index) {
+  lightboxIndex = index;
+  updateLightbox();
+  document.getElementById('lightbox').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeLightbox(e) {
+  if (!e || e.target === document.getElementById('lightbox')) {
+    document.getElementById('lightbox').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+}
+function changePhoto(dir) {
+  lightboxIndex = (lightboxIndex + dir + lightboxPhotos.length) % lightboxPhotos.length;
+  updateLightbox();
+}
+function updateLightbox() {
+  const p = lightboxPhotos[lightboxIndex];
+  const img = document.getElementById('lightbox-img');
+  img.style.opacity = 0;
+  setTimeout(() => {
+    img.src = p.src; img.alt = p.caption;
+    document.getElementById('lightbox-caption').textContent = p.caption;
+    document.getElementById('lightbox-sub').textContent = p.sub;
+    img.style.transition = 'opacity 0.2s'; img.style.opacity = 1;
+  }, 100);
+}
+document.addEventListener('keydown', e => {
+  const lb = document.getElementById('lightbox');
+  if (!lb.classList.contains('open')) return;
+  if (e.key === 'Escape') closeLightbox();
+  if (e.key === 'ArrowLeft') changePhoto(-1);
+  if (e.key === 'ArrowRight') changePhoto(1);
+});
+document.addEventListener('DOMContentLoaded', () => {
+  setTimeout(() => {
+    const cards = document.querySelectorAll('.photo-card');
+    lightboxPhotos = [];
+    cards.forEach((card, i) => {
+      const img = card.querySelector('img');
+      const caption = card.querySelector('.photo-caption p')?.textContent || '';
+      const sub = card.querySelector('.photo-caption small')?.textContent || '';
+      if (img) {
+        lightboxPhotos.push({ src: img.src, caption, sub });
+        card.addEventListener('click', () => openLightbox(i));
+      }
+    });
+  }, 500);
+});
+</script>
 </body>
 </html>
