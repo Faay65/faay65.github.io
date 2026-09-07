@@ -1,0 +1,11 @@
+# Stray/empty folder created by mistake
+{data,css,js}/
+
+# Redundant raw source images (clean-named copies are committed instead)
+Certificates/WhatsApp Image*.jpeg
+Certificates/Screenshot*.png
+
+# OS / editor junk
+Thumbs.db
+.DS_Store
+desktop.ini
