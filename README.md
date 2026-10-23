@@ -1,71 +1,94 @@
 # Dr. Fahad Ayaz — Portfolio
 
-## How to Edit Your Portfolio
+A single-page portfolio site hosted on GitHub Pages at https://faay65.github.io/
 
-You only ever need to edit files in the `data/` folder.
-Each file controls one section of your website.
+## How It Works
 
----
+Everything lives in **`index.html`** — the page structure, all styling (in a
+`<style>` block), and all content (in `<script>` blocks near the bottom of the
+file). There are no separate data or CSS files to wire up; open `index.html` and
+edit the relevant section in place.
+
+> Note: earlier versions of this project kept content in a `data/` folder and
+> styling in `css/style.css`. Those files are no longer used and have been
+> removed — `index.html` is now the single source of truth.
 
 ## File Map
 
-| File | What it controls |
-|------|-----------------|
-| `data/personal.js` | Your name, title, photo, languages, stats |
-| `data/contact.js` | Email, phone, office, LinkedIn, Scholar, ResearchGate |
-| `data/about.js` | Professional summary paragraphs and tags |
-| `data/education.js` | Degrees, institutions, years, URLs |
-| `data/experience.js` | Jobs, roles, dates, descriptions |
-| `data/publications.js` | Papers, journals, conferences, DOI links |
-| `data/projects.js` | Ongoing/current research projects |
-| `data/skills.js` | Skill groups and percentages |
-| `data/certificates.js` | Certificates, awards, honours, achievements |
-| `data/collaborators.js` | Partner institutions and organisations |
-| `data/photos.js` | Event photos (graduation, awards, conferences) |
-| `css/style.css` | All colours, fonts, and layout |
-| `js/render.js` | Page builder — do NOT edit |
-| `index.html` | Page structure — do NOT edit |
+| File / Folder | What it holds |
+|---------------|---------------|
+| `index.html` | The entire site: layout, styles, content, and scripts |
+| `photos/` | Event photos shown in the gallery |
+| `Certificates/` | Certificate images shown in the Certificates section |
+| `Logos/` | Institution logos used in the Education section |
 
----
+## Editing Content
 
-## How to Add a Photo
+Open `index.html` and scroll to the labelled `<script>` section. Each content
+block is a JavaScript array/object you can edit directly:
 
-1. Put your image file (e.g. `graduation.jpg`) in the `photos/` folder
-2. Open `data/photos.js`
-3. Add an entry:
+- `PERSONAL` — name, title, photo, languages, hero stats
+- `CONTACT` — email, phone, office, social links
+- `ABOUT` — summary paragraphs and research tags
+- `EDUCATION` — degrees, institutions, years
+- `EXPERIENCE` — roles, dates, descriptions
+- `PUBLICATIONS` — papers, venues, DOI links
+- `PROJECTS` — current/ongoing projects
+- `SKILLS` — skill groups and percentages
+- `CERTIFICATES` / `AWARDS` / `ACHIEVEMENTS` — recognition section
+- `COLLABORATORS` — partner institutions
+- `PHOTOS` — event gallery images
+
+### Add a Certificate
+
+1. Put the image file in the `Certificates/` folder.
+2. In `index.html`, find the `CERTIFICATES` array and add an entry:
+```js
+{
+  title:  "Certificate Name",
+  issuer: "Issuing Organisation",
+  year:   "2026",
+  image:  "your_file.png",   // filename inside Certificates/
+  url:    "https://verification-link",  // optional
+},
+```
+
+### Add a Photo
+
+1. Put the image file in the `photos/` folder.
+2. In `index.html`, find the `PHOTOS` array and add an entry:
 ```js
 {
   file:     "graduation.jpg",
   caption:  "PhD Graduation",
   location: "University of Glasgow",
-  year:     "2024",
+  year:     "2025",
   category: "Graduation",
 },
 ```
 
-## How to Add a Publication
+### Add a Publication
 
-Open `data/publications.js` and add:
+In `index.html`, find the `PUBLICATIONS` array and add an entry:
 ```js
 {
   type:  "Journal",
-  year:  "2025",
-  title: "Your paper title here",
+  year:  "2026",
+  title: "Your paper title",
   venue: "IEEE Transactions on ...",
   tags:  ["Tag1", "Tag2"],
   url:   "https://doi.org/...",
 },
 ```
 
-## How to Change Colours
+### Change Colours
 
-Open `css/style.css` and find the `:root` block at the top.
-Change `--blue`, `--cyan`, or `--bg-dark` to your preferred colours.
+In `index.html`, find the `:root` block inside the `<style>` section near the
+top and edit the variables (`--blue`, `--cyan`, `--bg-dark`, etc.).
 
----
+## Publishing to GitHub Pages
 
-## Uploading to GitHub Pages
-
-1. Upload ALL files and folders to your repository
-2. Make sure `index.html` is at the root level
-3. GitHub Pages will serve it automatically
+1. Verify your changes by opening `index.html` locally in a browser.
+2. Commit and push to the `faay65.github.io` repository (keep `index.html` at
+   the repository root).
+3. GitHub Pages serves the updated site automatically.

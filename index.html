@@ -145,9 +145,11 @@ nav {
 }
 .hero-badge .pulse { width: 6px; height: 6px; background: var(--cyan); border-radius: 50%; animation: pulse 2s infinite; }
 @keyframes pulse { 0%,100%{opacity:1;} 50%{opacity:0.3;} }
-.hero-title { font-family: var(--ff-display); font-size: clamp(2.2rem, 5vw, 4rem); font-weight: 700; line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 1.2rem; }
+.hero-title { font-family: var(--ff-display); font-size: clamp(1.9rem, 3.6vw, 3rem); font-weight: 700; line-height: 1.15; letter-spacing: -0.02em; margin-bottom: 1.2rem; }
 .hero-title .hl { background: linear-gradient(135deg, var(--blue-light), var(--cyan)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-.hero-title .hero-postnom { font-family: var(--ff-body); font-size: 0.42em; font-weight: 600; color: var(--blue-light); letter-spacing: 0.04em; vertical-align: baseline; }
+.hero-title .hero-name-line { white-space: nowrap; }
+.hero-title .hero-postnom { font-family: var(--ff-body); font-size: 0.42em; font-weight: 600; color: var(--blue-light); letter-spacing: 0.04em; vertical-align: baseline; white-space: nowrap; }
+@media (max-width: 520px) { .hero-title .hero-name-line { white-space: normal; } }
 .hero-subtitle { color: var(--text-muted); font-size: 1rem; max-width: 480px; margin-bottom: 1.2rem; line-height: 1.75; }
 .hero-role-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 2rem; }
 .role-tag { padding: 0.28rem 0.75rem; background: var(--bg-card2); border: 1px solid var(--border); border-radius: 4px; font-size: 0.76rem; color: var(--text-muted); }
@@ -410,6 +412,10 @@ footer { position: relative; z-index: 1; text-align: center; padding: 2rem 3rem;
         <div class="lang-chips" id="about-memberships"></div>
       </div>
       <div class="info-card">
+        <h4>Journal Reviewer</h4>
+        <div class="lang-chips" id="about-reviewer"></div>
+      </div>
+      <div class="info-card">
         <h4>Research Areas</h4>
         <div class="lang-chips" id="about-skills"></div>
       </div>
@@ -447,27 +453,16 @@ footer { position: relative; z-index: 1; text-align: center; padding: 2rem 3rem;
         <a href="https://scholar.google.com/citations?user=MqEpd48AAAAJ&hl=en" target="_blank" class="impact-source">Google Scholar &#8599;</a>
       </div>
       <div class="impact-metrics">
-        <div class="impact-metric"><div class="impact-num">151</div><div class="impact-label">Citations</div></div>
-        <div class="impact-metric"><div class="impact-num">6</div><div class="impact-label">h-index</div></div>
-        <div class="impact-metric"><div class="impact-num">4</div><div class="impact-label">i10-index</div></div>
+        <div class="impact-metric"><div class="impact-num" id="impact-citations"></div><div class="impact-label">Citations</div></div>
+        <div class="impact-metric"><div class="impact-num" id="impact-hindex"></div><div class="impact-label">h-index</div></div>
+        <div class="impact-metric"><div class="impact-num" id="impact-i10index"></div><div class="impact-label">i10-index</div></div>
       </div>
     </div>
 
     <div class="impact-block">
       <div class="impact-head"><span>Journal Quartile Ranking</span></div>
-      <div class="quartile-bars">
-        <div class="quartile-row">
-          <span class="quartile-tag q1">Q1</span>
-          <div class="quartile-track"><div class="quartile-fill q1" style="width:66%"></div></div>
-          <span class="quartile-val">66% &middot; 6 papers</span>
-        </div>
-        <div class="quartile-row">
-          <span class="quartile-tag na">NA</span>
-          <div class="quartile-track"><div class="quartile-fill na" style="width:34%"></div></div>
-          <span class="quartile-val">34% &middot; 3 papers</span>
-        </div>
-      </div>
-      <div class="quartile-note">Based on 9 recent papers in the last 10 years (5 books / conference papers excluded).</div>
+      <div class="quartile-bars" id="quartile-bars"></div>
+      <div class="quartile-note" id="quartile-note"></div>
     </div>
   </div>
 
@@ -622,9 +617,30 @@ const PERSONAL = {
   stats: [
     { number: "15",  label: "Publications"          },
     { number: "4+",  label: "Years Research"        },
-    { number: "3",   label: "PhD Students Mentored" },
+    { number: "3",   label: "Mentoring PhD Students" },
     { number: "50+", label: "Master's Students"     },
   ],
+};
+
+
+// ============================================================
+//  RESEARCH IMPACT METRICS  ← EDIT THESE NUMBERS HERE
+//  Update from your Google Scholar profile, then save. The page
+//  updates automatically — no need to touch the HTML layout.
+// ============================================================
+
+const SCHOLAR = {
+  // Google Scholar metrics (copy from your profile page)
+  citations: 162,
+  hIndex:    6,
+  i10Index:  4,
+
+  // Journal quartile ranking bars (shown beside the metrics)
+  quartiles: [
+    { label: "Q1", class: "q1", percent: 66, papers: 6 },
+    { label: "NA", class: "na", percent: 34, papers: 3 },
+  ],
+  quartileNote: "Based on 9 recent papers in the last 10 years (5 books / conference papers excluded).",
 };
 
 
@@ -955,7 +971,8 @@ const PUBLICATIONS = [
 const PROJECTS = [
   {
     title:       "WEATHER Project — AI-driven Early Health Warning System",
-    funder:      "NIHR (National Institute for Health and Care Research)",
+    funder:      "Funded by NIHR (National Institute for Health and Care Research)",
+    funderUrl:   "https://fundingawards.nihr.ac.uk/award/NIHR204825",
     partners:    ["UWS", "University of Strathclyde", "University of KwaZulu-Natal", "University of Portsmouth", "RCSI"],
     description: "Developing a Predictive Warning System Intervention integrating low-cost environmental sensors, ML models, real-time data pipelines, and health risk assessment frameworks to predict extreme weather events and health risks in climate-vulnerable regions.",
     status:      "Active",
@@ -1082,10 +1099,17 @@ const CERTIFICATES = [
     url:    "https://www.ieee.org/",
   },
   {
-    title:  "Certificate of Appreciation — IEEE ICC Summer School",
+    title:  "Certificate of Attendance — IEEE ICC Summer School",
     issuer: "IEEE ComSoc UK & Ireland · Glasgow, 28 May 2026",
     year:   "2026",
-    image:  "IEEE_ICC_Volunteer.jpeg",
+    image:  "IEEE_ICC_Summer School.jpeg",
+    url:    "https://www.ieee.org/",
+  },
+  {
+    title:  "Certificate of Appreciation — IEEE ICC Volunteer",
+    issuer: "IEEE International Conference on Communications (ICC) · Glasgow",
+    year:   "2026",
+    image:  "IEEE_ICC_Volunteer.png",
     url:    "https://www.ieee.org/",
   },
   {
@@ -1270,7 +1294,7 @@ function renderHero() {
   q('hero-badge-text').textContent =
     `Global Talent · Endorsed by UK Research and Innovation`;
   q('hero-title').innerHTML =
-    `Dr. <span class="hl">${p.firstName}</span> ${p.lastName}<span class="hero-postnom">, PhD</span>`
+    `<span class="hero-name-line">Dr. <span class="hl">${p.firstName}</span> ${p.lastName}<span class="hero-postnom">, PhD, MIEEE, MIET</span></span>`
   q('hero-subtitle').innerHTML =
     `<strong>Postdoctoral Fellow</strong> — UWS<br>PhD in Electronics & Electrical Engineering — UofG`;
 
@@ -1333,6 +1357,19 @@ function renderAbout() {
     memEl.appendChild(s);
   });
 
+  // journal reviewer roles (ongoing service)
+  const revEl = q('about-reviewer');
+  const REVIEWER = [
+    'Sensors (MDPI)',
+    'Computers and Electrical Engineering (Elsevier)',
+  ];
+  REVIEWER.forEach(r => {
+    const s = document.createElement('span');
+    s.className = 'lang-chip';
+    s.textContent = r;
+    revEl.appendChild(s);
+  });
+
   // research areas (from ABOUT.tags)
   const skillEl = q('about-skills');
   ABOUT.tags.forEach(t => {
@@ -1390,6 +1427,27 @@ function renderExperience() {
   });
 }
 
+// ---------- RESEARCH IMPACT (Google Scholar metrics) ----------
+function renderImpact() {
+  if (typeof SCHOLAR === 'undefined') return;
+  const set = (id, val) => { const e = q(id); if (e) e.textContent = val; };
+  set('impact-citations', SCHOLAR.citations);
+  set('impact-hindex',    SCHOLAR.hIndex);
+  set('impact-i10index',  SCHOLAR.i10Index);
+
+  const bars = q('quartile-bars');
+  if (bars && Array.isArray(SCHOLAR.quartiles)) {
+    bars.innerHTML = SCHOLAR.quartiles.map(qt => `
+      <div class="quartile-row">
+        <span class="quartile-tag ${qt.class}">${qt.label}</span>
+        <div class="quartile-track"><div class="quartile-fill ${qt.class}" style="width:${qt.percent}%"></div></div>
+        <span class="quartile-val">${qt.percent}% &middot; ${qt.papers} paper${qt.papers === 1 ? '' : 's'}</span>
+      </div>`).join('');
+  }
+  const note = q('quartile-note');
+  if (note) note.textContent = SCHOLAR.quartileNote || '';
+}
+
 // ---------- PUBLICATIONS ----------
 function renderPublications() {
   const grid = q('pub-grid');
@@ -1422,7 +1480,11 @@ function renderProjects() {
         <div class="project-title">${p.url
           ? `<a href="${p.url}" target="_blank" style="color:inherit">${p.title}</a>`
           : p.title}</div>
-        ${p.funder ? `<div class="project-funder">${p.funder}</div>` : ''}
+        ${p.funder
+          ? `<div class="project-funder">${p.funderUrl
+              ? `<a href="${p.funderUrl}" target="_blank" style="color:inherit;text-decoration:underline">${p.funder} ↗</a>`
+              : p.funder}</div>`
+          : ''}
         <div class="project-desc">${p.description}</div>
         ${p.partners.length
           ? `<div class="project-partners">${p.partners.map(pt =>
@@ -1629,6 +1691,7 @@ document.addEventListener('DOMContentLoaded', () => {
   renderAbout();
   renderEducation();
   renderExperience();
+  renderImpact();
   renderPublications();
   renderProjects();
   renderSkills();
