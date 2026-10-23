@@ -1150,8 +1150,9 @@ const AWARDS = [
 const ACHIEVEMENTS = [
   {
     title:       "Organiser — IEEE Workshop & Distinguished Lecture Series",
-    year:        "2026",
+    year:        "20 Oct 2026",
     description: "Organised an IEEE Workshop and Distinguished Lecture Series at the University of the West of Scotland (UWS) on \"Next Generation Backhaul Networks for Industrial Applications\", bringing together researchers and industry experts.",
+    url:         "https://www.eventbrite.co.uk/e/next-generation-backhaul-networks-for-industrial-applications-tickets-2003355186291",
   },
   {
     title:       "PhD Thesis Successfully Defended",
@@ -1556,7 +1557,9 @@ function renderCertificates() {
     achList.innerHTML += `
       <div class="achievement-item">
         <div class="achievement-year">${a.year}</div>
-        <div class="achievement-title">${a.title}</div>
+        <div class="achievement-title">${a.url
+          ? `<a href="${a.url}" target="_blank" style="color:inherit;text-decoration:underline">${a.title} ↗</a>`
+          : a.title}</div>
         <div class="achievement-desc">${a.description}</div>
       </div>`;
   });
